@@ -61,9 +61,13 @@
 
 ---
 
-### Screenshots
+### Wireframes
 
-#### _To be added_
+#### Home Page Wireframe
+#### ![Home Page Wireframe](wireframe1.png)
+
+#### Carbon Footprint Page Wireframe
+#### ![Carbon Footprint Page Wireframe](wireframe2.png)
 
 ---
 
