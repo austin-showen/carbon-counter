@@ -1,10 +1,10 @@
-# **_Carbonator_**
+# **_Carbon Counter_**
 
 ## Date: 7/6/2023
 
 ### Author: [Austin Showen](https://github.com/austin-showen)
 
-### [Trello Board](https://trello.com/b/aU2H0Ynd/carbonator)
+### [Trello Board](https://trello.com/b/aU2H0Ynd/carbon-counter)
 
 ---
 
@@ -28,7 +28,7 @@
 
 ### **_About the App_**
 
-#### Carbonator is a web app designed to give users insight into their carbon footprint. Accessing data through the [Carbon Interface API](https://docs.carboninterface.com/#/), Carbonator allows authenticated users to register their vehicles and electronic appliances, then calculate the carbon emissions generated through their use.
+#### Carbon Counter is a web app designed to give users insight into their carbon footprint. Accessing data through the [Carbon Interface API](https://docs.carboninterface.com/#/), Carbonator allows authenticated users to register their vehicles and electronic appliances, then calculate the carbon emissions generated through their use.
 
 #### Specifications (MVP):
 
