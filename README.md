@@ -40,6 +40,7 @@
     - Calculate the carbon emissions from using their appliances for a chosen duration, then save the activity to the database.
     - Register their country and state. Carbon Interface calculates carbon emissions based on the energy profile of individual states, so this will give more accurate calculations.
     - View the carbon emissions for all previous trips and activities, as well as graphs of their overall carbon footprint.
+    - Edit and delete vehicles, appliances, trips, and activities.
 - **Unauthenticated users can:**
     - Access a small number of example vehicles.
     - Input a trip length in miles and calculate the carbon emissions from driving an example vehicle that distance.
@@ -50,17 +51,29 @@
 
 ### **_Entity Relationship Diagram_**
 
-#### 
+#### ![Entity Relationship Diagram](entity_relationship_diagram.png)
+
+---
+
+### **_Component Hierarchy Diagram_**
+
+#### ![Component Hierarchy Diagram](component_hierarchy_diagram.png)
 
 ---
 
 ### Screenshots
 
-####
+#### _To be added_
+
+---
 
 ### **_Stretch Goals (Post-MVP)_**
 
-- [ ] 
+- [ ] Using additional functionality from the Carbon Interface API, users can calculate the carbon emissions of flights.
+- [ ] Users can calculate the carbon emissions of shipping packages.
+- [ ] Users can view charts and diagrams of their carbon footprint.
+- [ ] Trips and activities include a date so users can visualize their carbon usage trends over time.
+- [ ] The application integrates a front-end API for styling.
 
 ---
 
