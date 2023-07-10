@@ -51,23 +51,23 @@
 
 ### **_Entity Relationship Diagram_**
 
-#### ![Entity Relationship Diagram](entity_relationship_diagram.png)
+#### ![Entity Relationship Diagram](assets/entity_relationship_diagram.png)
 
 ---
 
 ### **_Component Hierarchy Diagram_**
 
-#### ![Component Hierarchy Diagram](component_hierarchy_diagram.png)
+#### ![Component Hierarchy Diagram](assets/component_hierarchy_diagram.png)
 
 ---
 
 ### Wireframes
 
 #### Home Page Wireframe
-#### ![Home Page Wireframe](wireframe1.png)
+#### ![Home Page Wireframe](assets/wireframe1.png)
 
 #### Carbon Footprint Page Wireframe
-#### ![Carbon Footprint Page Wireframe](wireframe2.png)
+#### ![Carbon Footprint Page Wireframe](assets/wireframe2.png)
 
 ---
 
