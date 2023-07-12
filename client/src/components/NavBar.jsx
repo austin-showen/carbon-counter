@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({ user, handleLogOut }) => {
   return (
     <header>
       <NavLink to="/">Home</NavLink>
@@ -8,8 +8,13 @@ const NavBar = () => {
       <NavLink to="/appliances">Appliances</NavLink>
       <NavLink to="/trips">Trips</NavLink>
       <NavLink to="/activities">Electronic Usage</NavLink>
-      <NavLink to="/login">Log In</NavLink>
-      <NavLink to="/signup">Sign Up</NavLink>
+      {user && (
+        <NavLink to="/" onClick={handleLogOut}>
+          Log Out
+        </NavLink>
+      )}
+      {!user && <NavLink to="/login">Log In</NavLink>}
+      {!user && <NavLink to="/signup">Sign Up</NavLink>}
     </header>
   )
 }

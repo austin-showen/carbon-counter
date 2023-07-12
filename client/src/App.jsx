@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
