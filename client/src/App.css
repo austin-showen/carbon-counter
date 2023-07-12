@@ -1,3 +1,14 @@
 * {
   margin: 0;
 }
+
+header {
+  width: 100vw;
+  height: 50px;
+  background-color: black;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
