@@ -13,8 +13,8 @@ const SelectYear = ({ selectedModel, models }) => {
       const modelYear = modelInstance.data.attributes.year
       if (!modelYears.includes(modelYear)) modelYears.push(modelYear)
     })
-    const sortedYears = modelYears.sort((a, b) => a - b)
-    setYears(sortedYears)
+    modelYears.sort()
+    setYears(modelYears)
   }, [selectedModel])
 
   const handleChange = (e) => {

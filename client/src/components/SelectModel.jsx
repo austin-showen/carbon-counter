@@ -24,6 +24,8 @@ const SelectModel = ({ makeId }) => {
         if (!modelsList.includes(modelName)) modelsList.push(modelName)
       })
 
+      modelsList.sort()
+
       setModels({
         data: response.data,
         modelsList: modelsList,

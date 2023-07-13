@@ -13,7 +13,9 @@ const AddVehicle = ({ user }) => {
         'https://www.carboninterface.com/api/v1/vehicle_makes',
         { headers: { Authorization: 'Bearer FQK1g6XNUEPFtJvf55wnw' } }
       )
-      const makesList = response.data.map((make) => make.data.attributes.name)
+      const makesList = response.data
+        .map((make) => make.data.attributes.name)
+        .sort()
       setMakes({
         data: response.data,
         makesList: makesList,
