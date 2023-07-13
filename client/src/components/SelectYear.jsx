@@ -21,23 +21,27 @@ const SelectYear = ({ selectedModel, models }) => {
     setSelectedYear(e.target.value)
   }
 
-  return (
-    <div>
-      <form>
-        <select value={selectedYear} onChange={handleChange}>
-          <option value="" disabled>
-            Select Year
-          </option>
-          {years &&
-            years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-        </select>
-      </form>
-    </div>
-  )
+  if (selectedModel.name) {
+    return (
+      <div>
+        <form>
+          <select value={selectedYear} onChange={handleChange}>
+            <option value="" disabled>
+              Select Year
+            </option>
+            {years &&
+              years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+          </select>
+        </form>
+      </div>
+    )
+  } else {
+    return <div></div>
+  }
 }
 
 export default SelectYear

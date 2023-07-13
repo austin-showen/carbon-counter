@@ -33,6 +33,7 @@ const SelectModel = ({ makeId }) => {
       })
     }
     if (makeId) getModels()
+    setSelectedModel({})
   }, [makeId])
 
   const handleChange = (e) => {
@@ -47,29 +48,33 @@ const SelectModel = ({ makeId }) => {
     setSelectedModel({ name: e.target.innerText })
   }
 
-  return (
-    <div className="SelectModel">
-      <div>
-        {selectedModel && <h1>{selectedModel.name}</h1>}
-        <form>
-          <input type="text" value={search} onChange={handleChange}></input>
-        </form>
+  if (makeId) {
+    return (
+      <div className="SelectModel">
         <div>
-          {models.filteredModels &&
-            models.filteredModels.map((model) => (
-              <div key={model} onClick={handleClick}>
-                {model}
-              </div>
-            ))}
+          {selectedModel && <h1>{selectedModel.name}</h1>}
+          <form>
+            <input type="text" value={search} onChange={handleChange}></input>
+          </form>
+          <div>
+            {models.filteredModels &&
+              models.filteredModels.map((model) => (
+                <div key={model} onClick={handleClick}>
+                  {model}
+                </div>
+              ))}
+          </div>
+        </div>
+        <div>
+          {selectedModel && (
+            <SelectYear selectedModel={selectedModel} models={models} />
+          )}
         </div>
       </div>
-      <div>
-        {selectedModel && (
-          <SelectYear selectedModel={selectedModel} models={models} />
-        )}
-      </div>
-    </div>
-  )
+    )
+  } else {
+    return <div></div>
+  }
 }
 
 export default SelectModel
