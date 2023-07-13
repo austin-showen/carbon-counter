@@ -6,8 +6,7 @@ const SignUp = () => {
   const navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
+    username: '',
     password: '',
     confirmPassword: ''
   })
@@ -15,13 +14,11 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
-      name: formValues.name,
-      email: formValues.email,
+      username: formValues.username,
       password: formValues.password
     })
     setFormValues({
-      name: '',
-      email: '',
+      username: '',
       password: '',
       confirmPassword: ''
     })
@@ -35,24 +32,13 @@ const SignUp = () => {
   return (
     <form className="signup" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           onChange={handleChange}
-          name="name"
+          name="username"
           type="text"
           placeholder="Username"
-          value={formValues.name}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={handleChange}
-          name="email"
-          type="email"
-          placeholder="email@website.com"
-          value={formValues.email}
+          value={formValues.username}
           required
         />
       </div>
@@ -78,7 +64,7 @@ const SignUp = () => {
       </div>
       <button
         disabled={
-          !formValues.email ||
+          !formValues.username ||
           (!formValues.password &&
             formValues.confirmPassword === formValues.password)
         }

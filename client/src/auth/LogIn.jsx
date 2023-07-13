@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const LogIn = ({ setUser }) => {
   const navigate = useNavigate()
 
-  const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [formValues, setFormValues] = useState({ username: '', password: '' })
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -14,7 +14,7 @@ const LogIn = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ email: '', password: '' })
+    setFormValues({ username: '', password: '' })
     setUser(payload)
     navigate('/')
   }
@@ -22,13 +22,13 @@ const LogIn = ({ setUser }) => {
   return (
     <form className="login" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="username">Username</label>
         <input
           onChange={handleChange}
-          name="email"
-          type="email"
-          placeholder="email@website.com"
-          value={formValues.email}
+          name="username"
+          type="text"
+          placeholder="Enter your username"
+          value={formValues.username}
           required
         />
       </div>
@@ -42,7 +42,7 @@ const LogIn = ({ setUser }) => {
           required
         />
       </div>
-      <button disabled={!formValues.email || !formValues.password}>
+      <button disabled={!formValues.username || !formValues.password}>
         Log In
       </button>
     </form>
