@@ -23,7 +23,7 @@ const AddVehicle = ({ user }) => {
     getMakes()
   }, [])
 
-  const handleChangeMake = (e) => {
+  const handleChange = (e) => {
     setSearch(e.target.value)
     const filteredMakes = makes.makesList.filter((make) =>
       make.toLowerCase().includes(e.target.value.toLowerCase())
@@ -31,7 +31,7 @@ const AddVehicle = ({ user }) => {
     setMakes({ ...makes, filteredMakes: filteredMakes })
   }
 
-  const handleClickMake = (e) => {
+  const handleClick = (e) => {
     const selectedMakeData = makes.data.find(
       (make) => make.data.attributes.name === e.target.innerText
     )
@@ -48,13 +48,13 @@ const AddVehicle = ({ user }) => {
             type="text"
             name="search"
             value={search}
-            onChange={handleChangeMake}
+            onChange={handleChange}
           ></input>
         </form>
         <div>
           {makes.filteredMakes &&
             makes.filteredMakes.map((make) => (
-              <div value={make} onClick={handleClickMake}>
+              <div key={make} onClick={handleClick}>
                 {make}
               </div>
             ))}
