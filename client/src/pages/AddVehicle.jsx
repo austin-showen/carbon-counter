@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import SelectModel from '../components/SelectModel'
+import { API_KEY } from '../globals'
 
 const AddVehicle = ({ user }) => {
   const [makes, setMakes] = useState({})
@@ -11,7 +12,7 @@ const AddVehicle = ({ user }) => {
     const getMakes = async () => {
       const response = await axios.get(
         'https://www.carboninterface.com/api/v1/vehicle_makes',
-        { headers: { Authorization: 'Bearer FQK1g6XNUEPFtJvf55wnw' } }
+        { headers: { Authorization: `Bearer ${API_KEY}` } }
       )
       const makesList = response.data
         .map((make) => make.data.attributes.name)

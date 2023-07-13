@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import SelectYear from './SelectYear'
+import { API_KEY } from '../globals'
 
 const SelectModel = ({ makeId }) => {
   const [search, setSearch] = useState('')
@@ -15,7 +16,7 @@ const SelectModel = ({ makeId }) => {
     const getModels = async () => {
       const response = await axios.get(
         `https://www.carboninterface.com/api/v1/vehicle_makes/${makeId}/vehicle_models`,
-        { headers: { Authorization: 'Bearer FQK1g6XNUEPFtJvf55wnw' } }
+        { headers: { Authorization: `Bearer ${API_KEY}` } }
       )
 
       const modelsList = []
