@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const userSchema = require('./User')
-const vehicleSchema = require('./Vehicle')
+const userSchema = require('./user')
+const vehicleSchema = require('./vehicle')
 
 const User = mongoose.model('User', userSchema)
 const Vehicle = mongoose.model('Vehicle', vehicleSchema)
