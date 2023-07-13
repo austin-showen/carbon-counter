@@ -13,6 +13,6 @@ a {
   text-decoration: none;
 }
 
-.AddVehicle {
+.AddVehicle, .SelectModel {
   display: flex;
 }

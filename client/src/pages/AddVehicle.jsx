@@ -21,6 +21,8 @@ const AddVehicle = ({ user }) => {
       })
     }
     getMakes()
+    setSearch('')
+    setSelectedMake({})
   }, [])
 
   const handleChange = (e) => {

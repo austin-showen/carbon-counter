@@ -1,9 +1,14 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import SelectYear from './SelectYear'
 
 const SelectModel = ({ makeId }) => {
   const [search, setSearch] = useState('')
-  const [models, setModels] = useState({})
+  const [models, setModels] = useState({
+    data: [],
+    modelsList: [],
+    filteredModels: []
+  })
   const [selectedModel, setSelectedModel] = useState({})
 
   useEffect(() => {
@@ -41,18 +46,25 @@ const SelectModel = ({ makeId }) => {
   }
 
   return (
-    <div>
-      {selectedModel && <h1>{selectedModel.name}</h1>}
-      <form>
-        <input type="text" value={search} onChange={handleChange}></input>
-      </form>
+    <div className="SelectModel">
       <div>
-        {models.filteredModels &&
-          models.filteredModels.map((model) => (
-            <div key={model} onClick={handleClick}>
-              {model}
-            </div>
-          ))}
+        {selectedModel && <h1>{selectedModel.name}</h1>}
+        <form>
+          <input type="text" value={search} onChange={handleChange}></input>
+        </form>
+        <div>
+          {models.filteredModels &&
+            models.filteredModels.map((model) => (
+              <div key={model} onClick={handleClick}>
+                {model}
+              </div>
+            ))}
+        </div>
+      </div>
+      <div>
+        {selectedModel && (
+          <SelectYear selectedModel={selectedModel} models={models} />
+        )}
       </div>
     </div>
   )
