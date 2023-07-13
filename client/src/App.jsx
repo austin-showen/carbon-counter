@@ -9,6 +9,7 @@ import Activities from './pages/Activities'
 import LogIn from './auth/LogIn'
 import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
+import AddVehicle from './pages/AddVehicle'
 import './App.css'
 
 const App = () => {
@@ -37,7 +38,8 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/vehicles" element={<Vehicles />} />
+          <Route path="/vehicles" element={<Vehicles user={user} />} />
+          <Route path="/vehicles/add" element={<AddVehicle user={user} />} />
           <Route path="/appliances" element={<Appliances />} />
           <Route path="/trips" element={<Trips />} />
           <Route path="/activities" element={<Activities />} />
