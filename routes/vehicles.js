@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../controllers/vehicle')
+const controller = require('../controllers/vehicles')
 const middleware = require('../middleware')
 
 router.post('/', controller.create)

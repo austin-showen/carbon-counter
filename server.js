@@ -3,7 +3,7 @@ const logger = require('morgan')
 const cors = require('cors')
 
 const AuthRouter = require('./routes/auth')
-const VehicleRouter = require('./routes/vehicle')
+const VehicleRouter = require('./routes/vehicles')
 
 const PORT = process.env.PORT || 3001
 

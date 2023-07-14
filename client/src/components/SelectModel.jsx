@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react'
 import SelectYear from './SelectYear'
 import { API_KEY } from '../globals'
 
-const SelectModel = ({ makeId }) => {
+const SelectModel = ({
+  makeId,
+  models,
+  setModels,
+  selectedModel,
+  setSelectedModel
+}) => {
   const [search, setSearch] = useState('')
-  const [models, setModels] = useState({
-    data: [],
-    modelsList: [],
-    filteredModels: []
-  })
-  const [selectedModel, setSelectedModel] = useState({})
 
   useEffect(() => {
     const getModels = async () => {
@@ -35,6 +35,7 @@ const SelectModel = ({ makeId }) => {
     }
     if (makeId) getModels()
     setSelectedModel({})
+    setSearch('')
   }, [makeId])
 
   const handleChange = (e) => {
@@ -47,6 +48,7 @@ const SelectModel = ({ makeId }) => {
 
   const handleClick = (e) => {
     setSelectedModel({ name: e.target.innerText })
+    setSearch('')
   }
 
   if (makeId) {
@@ -65,11 +67,6 @@ const SelectModel = ({ makeId }) => {
                 </div>
               ))}
           </div>
-        </div>
-        <div>
-          {selectedModel && (
-            <SelectYear selectedModel={selectedModel} models={models} />
-          )}
         </div>
       </div>
     )

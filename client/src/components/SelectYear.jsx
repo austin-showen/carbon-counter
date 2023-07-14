@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 
-const SelectYear = ({ selectedModel, models }) => {
-  const [years, setYears] = useState([])
-  const [selectedYear, setSelectedYear] = useState('')
-
+const SelectYear = ({
+  selectedModel,
+  models,
+  years,
+  setYears,
+  selectedYear,
+  setSelectedYear
+}) => {
   useEffect(() => {
     const modelInstances = models.data.filter(
       (model) => model.data.attributes.name === selectedModel.name
