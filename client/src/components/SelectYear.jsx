@@ -12,13 +12,13 @@ const SelectYear = ({
     const modelInstances = models.data.filter(
       (model) => model.data.attributes.name === selectedModel.name
     )
-    const modelYears = []
+    const modelIds = {}
     modelInstances.forEach((modelInstance) => {
       const modelYear = modelInstance.data.attributes.year
-      if (!modelYears.includes(modelYear)) modelYears.push(modelYear)
+      if (!modelIds[modelYear]) modelIds[modelYear] = modelInstance.data.id
     })
-    modelYears.sort()
-    setYears(modelYears)
+    setYears(modelIds)
+    setSelectedYear('')
   }, [selectedModel])
 
   const handleChange = (e) => {
@@ -30,11 +30,11 @@ const SelectYear = ({
       <div>
         <form>
           <select value={selectedYear} onChange={handleChange}>
-            <option value="" disabled>
+            <option value="" selected disabled>
               Select Year
             </option>
-            {years &&
-              years.map((year) => (
+            {Object.keys(years).length > 0 &&
+              Object.keys(years).map((year) => (
                 <option key={year} value={year}>
                   {year}
                 </option>

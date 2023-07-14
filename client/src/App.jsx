@@ -10,6 +10,7 @@ import LogIn from './auth/LogIn'
 import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
 import AddVehicle from './pages/AddVehicle'
+import AddTrip from './pages/AddTrip'
 import './App.css'
 
 const App = () => {
@@ -41,7 +42,8 @@ const App = () => {
           <Route path="/vehicles" element={<Vehicles user={user} />} />
           <Route path="/vehicles/add" element={<AddVehicle user={user} />} />
           <Route path="/appliances" element={<Appliances />} />
-          <Route path="/trips" element={<Trips />} />
+          <Route path="/trips" element={<Trips user={user} />} />
+          <Route path="/trips/add" element={<AddTrip user={user} />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp />} />
