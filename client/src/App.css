@@ -2,17 +2,58 @@
   margin: 0;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f2fff9;
+  color: #4c3b4d
+}
+
 header {
   width: 100vw;
   height: 50px;
-  background-color: black;
+  background-color: #4c3b4d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div {
+  display: flex;
+  justify-content: space-around;
+}
+
+header a {
+  font-weight: 600;
+  color: #c9eddc;
+  margin: 30px;
+}
+
+header a:hover {
   color: white;
 }
 
 a {
+  color: #89b6a5;
   text-decoration: none;
+}
+
+a:hover {
+  font-weight: 600;
+  color: #6a706e;
 }
 
 .AddVehicle, .SelectModel {
   display: flex;
+}
+
+.card {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #4c3b4d;
+}
+
+.card:hover {
+  background-color: #b8dccb;
 }

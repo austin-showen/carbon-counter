@@ -22,7 +22,7 @@ const Vehicles = ({ user }) => {
       <div>
         {vehicles &&
           vehicles.map((vehicle) => (
-            <div key={vehicle.id}>
+            <div key={vehicle.id} className="card">
               <h1>
                 {vehicle.year} {vehicle.make} {vehicle.model}
               </h1>
