@@ -9,7 +9,9 @@ const Vehicles = ({ user }) => {
   useEffect(() => {
     const getVehicles = async () => {
       const response = await axios.get(`${BACKEND_URL}/vehicles/`, {
-        username: user.username
+        data: {
+          username: 'asdf'
+        }
       })
       setVehicles(response.data)
     }
