@@ -51,22 +51,46 @@ const SelectModel = ({
     setSearch('')
   }
 
+  const handleReset = (e) => {
+    setSelectedModel({})
+    setSearch('')
+  }
+
   if (makeId) {
     return (
       <div className="SelectModel">
         <div>
-          {selectedModel && <h1>{selectedModel.name}</h1>}
-          <form>
-            <input type="text" value={search} onChange={handleChange}></input>
-          </form>
-          <div>
-            {models.filteredModels &&
-              models.filteredModels.map((model) => (
-                <div key={model} onClick={handleClick}>
-                  {model}
-                </div>
-              ))}
-          </div>
+          {!selectedModel.name && <h1>Select the Model:</h1>}
+          {selectedModel.name && (
+            <div>
+              <h1>{selectedModel.name}</h1>
+              <button onClick={handleReset}>Reset</button>
+            </div>
+          )}
+          {!selectedModel.name && (
+            <div>
+              <form>
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search for a Model"
+                  value={search}
+                  onChange={handleChange}
+                ></input>
+              </form>
+              <div>
+                {models.filteredModels &&
+                  models.filteredModels.slice(0, 10).map((model) => (
+                    <div key={model} className="card" onClick={handleClick}>
+                      {model}
+                    </div>
+                  ))}
+                {models.filteredModels && models.filteredModels.length > 10 && (
+                  <div className="card">...</div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )

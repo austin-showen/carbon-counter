@@ -37,6 +37,7 @@ const AddVehicle = ({ user }) => {
             setMakes={setMakes}
             selectedMake={selectedMake}
             setSelectedMake={setSelectedMake}
+            setSelectedModel={setSelectedModel}
           />
         </div>
         <div>

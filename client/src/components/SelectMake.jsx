@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { API_KEY } from '../globals'
 
-const SelectMake = ({ makes, setMakes, selectedMake, setSelectedMake }) => {
+const SelectMake = ({
+  makes,
+  setMakes,
+  selectedMake,
+  setSelectedMake,
+  setSelectedModel
+}) => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -42,25 +48,45 @@ const SelectMake = ({ makes, setMakes, selectedMake, setSelectedMake }) => {
     setSearch('')
   }
 
+  const handleReset = (e) => {
+    setSelectedMake({})
+    setSelectedModel({})
+    setSearch('')
+  }
+
   return (
     <div>
-      {selectedMake && <h1>{selectedMake.name}</h1>}
-      <form>
-        <input
-          type="text"
-          name="search"
-          value={search}
-          onChange={handleChange}
-        ></input>
-      </form>
-      <div>
-        {makes.filteredMakes &&
-          makes.filteredMakes.map((make) => (
-            <div key={make} onClick={handleClick}>
-              {make}
-            </div>
-          ))}
-      </div>
+      {!selectedMake.name && <h1>Select the Make:</h1>}
+      {selectedMake.name && (
+        <div>
+          <h1>Make: {selectedMake.name}</h1>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      )}
+      {!selectedMake.name && (
+        <div>
+          <form>
+            <input
+              type="text"
+              name="search"
+              placeholder="Search for a Make"
+              value={search}
+              onChange={handleChange}
+            ></input>
+          </form>
+          <div>
+            {makes.filteredMakes &&
+              makes.filteredMakes.slice(0, 10).map((make) => (
+                <div key={make} className="card" onClick={handleClick}>
+                  {make}
+                </div>
+              ))}
+            {makes.filteredMakes && makes.filteredMakes.length > 10 && (
+              <div className="card">...</div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
