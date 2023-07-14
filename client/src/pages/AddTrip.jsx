@@ -22,7 +22,6 @@ const AddTrip = () => {
       distance_value: Number(distance),
       vehicle_model_id: vehicle.apiId
     }
-    console.log(payload)
     const response = await axios.post(
       'https://www.carboninterface.com/api/v1/estimates',
       payload,

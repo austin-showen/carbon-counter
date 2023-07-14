@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { BACKEND_URL } from '../globals'
 
 const Vehicles = ({ user }) => {
   const [vehicles, setVehicles] = useState([])
 
   useEffect(() => {
     const getVehicles = async () => {
-      const response = await axios.get('http://localhost:3001/vehicles/', {
+      const response = await axios.get(`${BACKEND_URL}/vehicles/`, {
         username: user.username
       })
       setVehicles(response.data)
@@ -21,8 +22,8 @@ const Vehicles = ({ user }) => {
       <div>
         {vehicles &&
           vehicles.map((vehicle) => (
-            <div>
-              <h1 key={vehicle.id}>
+            <div key={vehicle.id}>
+              <h1>
                 {vehicle.year} {vehicle.make} {vehicle.model}
               </h1>
               <Link to="/trips/add" state={{ vehicle: vehicle }}>

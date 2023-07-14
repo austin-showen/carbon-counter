@@ -4,6 +4,7 @@ import SelectModel from '../components/SelectModel'
 import SelectMake from '../components/SelectMake'
 import SelectYear from '../components/SelectYear'
 import axios from 'axios'
+import { BACKEND_URL } from '../globals'
 
 const AddVehicle = ({ user }) => {
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ const AddVehicle = ({ user }) => {
   const [selectedYear, setSelectedYear] = useState('')
 
   const handleSubmit = async (e) => {
-    await axios.post('http://localhost:3001/vehicles/', {
+    await axios.post(`${BACKEND_URL}/vehicles/`, {
       username: user.username,
       make: selectedMake.name,
       model: selectedModel.name,
@@ -65,8 +66,7 @@ const AddVehicle = ({ user }) => {
           {selectedYear && (
             <div>
               <h2>
-                {selectedYear} {selectedMake.name} {selectedModel.name}{' '}
-                {years[selectedYear]}
+                {selectedYear} {selectedMake.name} {selectedModel.name}
               </h2>
               <button onClick={handleSubmit} disabled={!user.username}>
                 Add Vehicle

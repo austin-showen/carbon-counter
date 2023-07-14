@@ -30,7 +30,7 @@ const SelectYear = ({
       <div>
         <form>
           <select value={selectedYear} onChange={handleChange}>
-            <option value="" selected disabled>
+            <option value="" disabled>
               Select Year
             </option>
             {Object.keys(years).length > 0 &&
