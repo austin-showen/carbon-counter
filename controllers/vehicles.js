@@ -19,11 +19,8 @@ const create = async (req, res) => {
 }
 
 const index = async (req, res) => {
-  console.log(req.data)
-  const { username } = req.data
-  console.log(username)
+  const { username } = req.params
   const user = await User.findOne({ username })
-  console.log(user)
   const vehicles = await Vehicle.find({ user: user._id })
   res.send(vehicles)
 }

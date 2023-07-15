@@ -8,11 +8,9 @@ const Vehicles = ({ user }) => {
 
   useEffect(() => {
     const getVehicles = async () => {
-      const response = await axios.get(`${BACKEND_URL}/vehicles/`, {
-        data: {
-          username: 'asdf'
-        }
-      })
+      const response = await axios.get(
+        `${BACKEND_URL}/vehicles/${user.username}`
+      )
       setVehicles(response.data)
     }
     if (user) getVehicles()
@@ -24,7 +22,7 @@ const Vehicles = ({ user }) => {
       <div>
         {vehicles &&
           vehicles.map((vehicle) => (
-            <div key={vehicle.id} className="card">
+            <div key={vehicle.apiId} className="card">
               <h1>
                 {vehicle.year} {vehicle.make} {vehicle.model}
               </h1>
