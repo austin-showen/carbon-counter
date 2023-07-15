@@ -1,9 +1,10 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-import { API_KEY } from '../globals'
+import { API_KEY, BACKEND_URL } from '../globals'
 
-const AddTrip = () => {
+const AddTrip = ({ user }) => {
+  const navigate = useNavigate()
   const location = useLocation()
   const { vehicle } = location.state
   const [distance, setDistance] = useState('')
@@ -30,6 +31,16 @@ const AddTrip = () => {
     setEstimate(response.data.data.attributes)
   }
 
+  const handleSave = async (e) => {
+    await axios.post(`${BACKEND_URL}/trips/`, {
+      username: user.username,
+      miles: distance,
+      carbonGrams: estimate.carbon_g,
+      vehicleId: vehicle.apiId
+    })
+    navigate('/trips')
+  }
+
   return (
     <div>
       <h1>
@@ -43,6 +54,7 @@ const AddTrip = () => {
       {estimate && (
         <div>
           <h2>Your trip released {estimate.carbon_g} grams of carbon.</h2>
+          <button onClick={handleSave}>Save this Trip</button>
         </div>
       )}
     </div>

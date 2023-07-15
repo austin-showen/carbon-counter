@@ -2,19 +2,18 @@ const { Vehicle, User, Trip } = require('../models')
 const mongoose = require('mongoose')
 
 const create = async (req, res) => {
-  const { username, make, model, year, miles, carbonGrams, vehicleId, apiId } =
-    req.body
+  const { username, miles, carbonGrams, date, vehicleId, apiId } = req.body
   const user = await User.findOne({ username })
   const vehicle = await Vehicle.findOne({ apiId: vehicleId })
   const trip = new Trip()
   try {
-    trip.make = make
-    trip.model = model
-    trip.year = year
+    trip.make = vehicle.make
+    trip.model = vehicle.model
+    trip.year = vehicle.year
     trip.miles = miles
     trip.carbonGrams = carbonGrams
-    trip.apiId = apiId
-    trip.vehicleId = vehicle.apiId
+    // trip.date = date
+    trip.vehicle = vehicle._id
     trip.user = user._id
     trip.save()
     res.send(trip)
@@ -24,7 +23,7 @@ const create = async (req, res) => {
 }
 
 const index = async (req, res) => {
-  const { username } = req.body
+  const { username } = req.params
   const user = await User.findOne({ username })
   const trips = await Trip.find({ user: user._id })
   res.send(trips)
