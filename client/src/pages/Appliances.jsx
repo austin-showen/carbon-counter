@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import AddAppliance from './AddAppliance'
+import AddAppliance from '../components/AddAppliance'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BACKEND_URL } from '../globals'
