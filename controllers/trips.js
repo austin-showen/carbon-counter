@@ -29,4 +29,14 @@ const index = async (req, res) => {
   res.send(trips)
 }
 
-module.exports = { create, index }
+const deleteTrip = async (req, res) => {
+  const { id } = req.params
+  try {
+    await Trip.deleteOne({ _id: id })
+    res.send('Deleted trip')
+  } catch (error) {
+    throw error
+  }
+}
+
+module.exports = { create, index, delete: deleteTrip }

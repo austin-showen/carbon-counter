@@ -25,7 +25,12 @@ const index = async (req, res) => {
 
 const deleteAppliance = async (req, res) => {
   const { id } = req.params
-  await Appliance.deleteOne({ _id: id })
+  try {
+    await Appliance.deleteOne({ _id: id })
+    res.send('Deleted appliance')
+  } catch (error) {
+    throw error
+  }
 }
 
 module.exports = { create, index, delete: deleteAppliance }
