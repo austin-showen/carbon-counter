@@ -21,8 +21,8 @@ const AddAppliance = ({ user, reload, setReload }) => {
       watts: appliance.watts,
       username: user.username
     })
-    setAppliance({ name: '', watts: '' })
     setReload(!reload)
+    setAppliance({ name: '', watts: '' })
   }
 
   return (

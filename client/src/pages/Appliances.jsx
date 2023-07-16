@@ -17,6 +17,12 @@ const Appliances = ({ user }) => {
     if (user) getAppliances()
   }, [reload])
 
+  const handleDelete = async (e) => {
+    await axios
+      .delete(`${BACKEND_URL}/appliances/${e.target.id}`)
+      .then(setReload(!reload))
+  }
+
   return (
     <div>
       {appliances &&
@@ -24,6 +30,9 @@ const Appliances = ({ user }) => {
           <div key={appliance._id} className="card">
             <h2>{appliance.name}</h2>
             <h3>{appliance.watts} watts</h3>
+            <button id={appliance._id} onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         ))}
       <AddAppliance user={user} reload={reload} setReload={setReload} />
