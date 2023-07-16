@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { BACKEND_URL } from '../globals'
 
-const AddAppliance = ({ user, setReload }) => {
+const AddAppliance = ({ user, reload, setReload }) => {
   const [appliance, setAppliance] = useState({ name: '', watts: '' })
 
   const handleChangeName = (e) => {
@@ -22,7 +22,7 @@ const AddAppliance = ({ user, setReload }) => {
       username: user.username
     })
     setAppliance({ name: '', watts: '' })
-    setReload(true)
+    setReload(!reload)
   }
 
   return (

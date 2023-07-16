@@ -13,7 +13,6 @@ const Appliances = ({ user }) => {
         `${BACKEND_URL}/appliances/${user.username}`
       )
       setAppliances(response.data)
-      setReload(false)
     }
     if (user) getAppliances()
   }, [reload])
@@ -27,7 +26,7 @@ const Appliances = ({ user }) => {
             <h3>{appliance.watts} watts</h3>
           </div>
         ))}
-      <AddAppliance user={user} setReload={setReload} />
+      <AddAppliance user={user} reload={reload} setReload={setReload} />
     </div>
   )
 }

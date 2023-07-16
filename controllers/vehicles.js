@@ -25,4 +25,9 @@ const index = async (req, res) => {
   res.send(vehicles)
 }
 
-module.exports = { create, index }
+const deleteVehicle = async (req, res) => {
+  const { id } = req.params
+  await Vehicle.deleteOne({ _id: id })
+}
+
+module.exports = { create, index, delete: deleteVehicle }
