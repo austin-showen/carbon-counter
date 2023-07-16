@@ -7,6 +7,7 @@ const AddTrip = ({ user }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const { vehicle } = location.state
+
   const [distance, setDistance] = useState('')
   const [estimate, setEstimate] = useState(null)
 

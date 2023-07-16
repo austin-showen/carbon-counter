@@ -1,5 +1,5 @@
-const Activities = () => {
+const Usages = () => {
   return <div>this is the list of activities</div>
 }
 
-export default Activities
+export default Usages

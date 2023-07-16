@@ -5,13 +5,13 @@ import Home from './pages/Home'
 import Vehicles from './pages/Vehicles'
 import Appliances from './pages/Appliances'
 import Trips from './pages/Trips'
-import Activities from './pages/Activities'
+import Usages from './pages/Usages'
 import LogIn from './auth/LogIn'
 import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
 import AddVehicle from './pages/AddVehicle'
 import AddTrip from './pages/AddTrip'
-import AddAppliance from './components/AddAppliance'
+import AddUsage from './pages/AddUsage'
 import './App.css'
 
 const App = () => {
@@ -45,7 +45,8 @@ const App = () => {
           <Route path="/appliances" element={<Appliances user={user} />} />
           <Route path="/trips" element={<Trips user={user} />} />
           <Route path="/trips/add" element={<AddTrip user={user} />} />
-          <Route path="/activities" element={<Activities />} />
+          <Route path="/usages" element={<Usages user={user} />} />
+          <Route path="/usages/add" element={<AddUsage user={user} />} />
           <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
