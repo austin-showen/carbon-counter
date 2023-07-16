@@ -11,6 +11,7 @@ import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
 import AddVehicle from './pages/AddVehicle'
 import AddTrip from './pages/AddTrip'
+import AddAppliance from './pages/AddAppliance'
 import './App.css'
 
 const App = () => {
@@ -41,7 +42,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/vehicles" element={<Vehicles user={user} />} />
           <Route path="/vehicles/add" element={<AddVehicle user={user} />} />
-          <Route path="/appliances" element={<Appliances />} />
+          <Route path="/appliances" element={<Appliances user={user} />} />
+          <Route
+            path="/appliances/add"
+            element={<AddAppliance user={user} />}
+          />
           <Route path="/trips" element={<Trips user={user} />} />
           <Route path="/trips/add" element={<AddTrip user={user} />} />
           <Route path="/activities" element={<Activities />} />

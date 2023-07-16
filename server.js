@@ -5,6 +5,7 @@ const cors = require('cors')
 const AuthRouter = require('./routes/auth')
 const VehicleRouter = require('./routes/vehicles')
 const TripRouter = require('./routes/trips')
+const ApplianceRouter = require('./routes/appliances')
 
 const PORT = process.env.PORT || 3001
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/auth', AuthRouter)
 app.use('/vehicles', VehicleRouter)
 app.use('/trips', TripRouter)
+app.use('/appliances', ApplianceRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
