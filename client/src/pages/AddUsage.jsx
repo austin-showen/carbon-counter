@@ -46,6 +46,17 @@ const AddUsage = ({ user }) => {
     setEstimate(response.data.data.attributes)
   }
 
+  const handleSave = async (e) => {
+    await axios.post(`${BACKEND_URL}/usages`, {
+      username: user.username,
+      region: region,
+      hours: hours,
+      carbonGrams: estimate.carbon_g,
+      applianceId: appliance._id
+    })
+    navigate('/usages')
+  }
+
   return (
     <div>
       <h1>How much carbon does your {appliance.name} use?</h1>
@@ -99,7 +110,7 @@ const AddUsage = ({ user }) => {
           <h2>
             Your electricity usage released {estimate.carbon_g} grams of carbon.
           </h2>
-          <button>Save this Usage</button>
+          <button onClick={handleSave}>Save this Usage</button>
         </div>
       )}
     </div>

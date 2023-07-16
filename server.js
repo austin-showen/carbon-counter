@@ -6,6 +6,7 @@ const AuthRouter = require('./routes/auth')
 const VehicleRouter = require('./routes/vehicles')
 const TripRouter = require('./routes/trips')
 const ApplianceRouter = require('./routes/appliances')
+const UsageRouter = require('./routes/usages')
 
 const PORT = process.env.PORT || 3001
 
@@ -22,6 +23,7 @@ app.use('/auth', AuthRouter)
 app.use('/vehicles', VehicleRouter)
 app.use('/trips', TripRouter)
 app.use('/appliances', ApplianceRouter)
+app.use('/usages', UsageRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
