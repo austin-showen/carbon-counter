@@ -1,4 +1,4 @@
-import AddAppliance from '../components/AddAppliance'
+import AddAppliance from './AddAppliance'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -25,7 +25,12 @@ const Appliances = ({ user }) => {
   }
 
   return (
-    <div>
+    <div className="Appliances">
+      <h1>{user.username}'s Appliances</h1>
+      <h3>
+        <Link to="/appliances/add">Add an Appliance</Link>
+      </h3>
+      <br></br>
       {appliances &&
         appliances.map((appliance) => (
           <div key={appliance._id} className="card">
@@ -34,12 +39,12 @@ const Appliances = ({ user }) => {
             <Link to="/usages/add" state={{ appliance: appliance }}>
               Add Usage
             </Link>
+            <br></br>
             <button id={appliance._id} onClick={handleDelete}>
               Delete
             </button>
           </div>
         ))}
-      <AddAppliance user={user} reload={reload} setReload={setReload} />
     </div>
   )
 }

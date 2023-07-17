@@ -10,6 +10,7 @@ import LogIn from './auth/LogIn'
 import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
 import AddVehicle from './pages/AddVehicle'
+import AddAppliance from './pages/AddAppliance'
 import AddTrip from './pages/AddTrip'
 import AddUsage from './pages/AddUsage'
 import './App.css'
@@ -43,6 +44,10 @@ const App = () => {
           <Route path="/vehicles" element={<Vehicles user={user} />} />
           <Route path="/vehicles/add" element={<AddVehicle user={user} />} />
           <Route path="/appliances" element={<Appliances user={user} />} />
+          <Route
+            path="/appliances/add"
+            element={<AddAppliance user={user} />}
+          />
           <Route path="/trips" element={<Trips user={user} />} />
           <Route path="/trips/add" element={<AddTrip user={user} />} />
           <Route path="/usages" element={<Usages user={user} />} />

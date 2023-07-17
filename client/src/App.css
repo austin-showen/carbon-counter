@@ -70,7 +70,7 @@ a:hover {
   margin-bottom: 50px;
 }
 
-.App, .AddVehicle, .Vehicles, .AddVehicle div {
+.App, .AddVehicle, .Vehicles, .Appliances, .AddVehicle div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,9 +81,10 @@ a:hover {
   min-width: 500px;
 }
 
-.Vehicles {
+.Vehicles, .Appliances, .Vehicles div, .Appliances div {
   width: 500px;
 }
+
 
 .card {
   width: 100%;
@@ -91,6 +92,13 @@ a:hover {
   margin: 10px;
   border-radius: 20px;
   box-shadow: 5px 5px 10px #4c3b4d;
+}
+
+.AddAppliance {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .hover-green:hover {
