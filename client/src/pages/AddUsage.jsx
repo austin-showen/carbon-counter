@@ -68,7 +68,10 @@ const AddUsage = ({ user }) => {
 
   return (
     <div className="AddUsage">
-      <h1>How much carbon does your {appliance.name} use?</h1>
+      <h1>
+        How much carbon does your{' '}
+        <span className="darkgreen-text">{appliance.name}</span> use?
+      </h1>
       <br></br>
       <div className="card">
         <button disabled={!recurring} onClick={handleRecurring}>
@@ -81,11 +84,14 @@ const AddUsage = ({ user }) => {
         <br></br>
         {recurring ? (
           <h3>
-            Enter the average number of hours you use the {appliance.name} per
-            day.
+            Enter the average number of hours you use the{' '}
+            <span className="darkgreen-text">{appliance.name}</span> per day.
           </h3>
         ) : (
-          <h3>Enter the number of hours you used the {appliance.name}.</h3>
+          <h3>
+            Enter the number of hours you used the{' '}
+            <span className="darkgreen-text">{appliance.name}</span>.
+          </h3>
         )}
         <form onSubmit={handleSubmit}>
           <input

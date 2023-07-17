@@ -9,7 +9,17 @@ body {
 }
 
 input {
-  padding: 10px;
+  padding: 13px;
+  box-shadow: inset 3px 3px 5px #6e5d6f;
+  border-radius: 10px;
+  border: none;
+  transition: 300ms ease-in-out;
+}
+
+input:focus {
+  box-shadow: 3px 3px 5px #6e5d6f;
+  border: none;
+  outline: none;
 }
 
 header {
@@ -118,4 +128,8 @@ a:hover {
 
 .home-link {
   font-size: 24px;
+}
+
+.darkgreen-text {
+  color: #6a706e;
 }

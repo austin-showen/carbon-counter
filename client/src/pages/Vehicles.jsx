@@ -38,7 +38,9 @@ const Vehicles = ({ user }) => {
 
   return (
     <div className="Vehicles">
-      <h1>{user.username}'s Vehicles</h1>
+      <h1>
+        <span className="darkgreen-text">{user.username}</span>'s Vehicles
+      </h1>
       <h3>
         <Link to="/vehicles/add">Add a Vehicle</Link>
       </h3>

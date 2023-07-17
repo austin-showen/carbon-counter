@@ -26,7 +26,9 @@ const Appliances = ({ user }) => {
 
   return (
     <div className="Appliances">
-      <h1>{user.username}'s Appliances</h1>
+      <h1>
+        <span className="darkgreen-text">{user.username}</span>'s Appliances
+      </h1>
       <h3>
         <Link to="/appliances/add">Add an Appliance</Link>
       </h3>

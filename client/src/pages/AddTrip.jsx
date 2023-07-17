@@ -59,7 +59,11 @@ const AddTrip = ({ user }) => {
   return (
     <div className="AddTrip">
       <h1>
-        Taking your {vehicle.year} {vehicle.make} {vehicle.model} for a trip?
+        Taking your{' '}
+        <span className="darkgreen-text">
+          {vehicle.year} {vehicle.make} {vehicle.model}
+        </span>{' '}
+        for a trip?
       </h1>
       <br></br>
       <div class="card">
