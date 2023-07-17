@@ -20,6 +20,12 @@ const Trips = ({ user }) => {
       .then(setReload(!reload))
   }
 
+  const formatQuantity = (quantity) => {
+    return quantity > 1000
+      ? `${(quantity / 1000).toFixed(2)} kilograms`
+      : `${quantity} grams`
+  }
+
   return (
     <div>
       {trips &&
@@ -31,11 +37,11 @@ const Trips = ({ user }) => {
             {trip.weeklyFrequency && (
               <h3>{trip.weeklyFrequency} times per week</h3>
             )}
-            <h2>{trip.carbonGrams} grams of carbon</h2>
+            <h2>{formatQuantity(trip.carbonGrams)} of carbon</h2>
             {trip.weeklyFrequency && (
               <h3>
-                {trip.carbonGrams * trip.weeklyFrequency} grams of carbon per
-                week
+                {formatQuantity(trip.carbonGrams * trip.weeklyFrequency)} of
+                carbon per week
               </h3>
             )}
             <button id={trip._id} onClick={handleDelete}>

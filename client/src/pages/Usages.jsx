@@ -20,6 +20,12 @@ const Usages = ({ user }) => {
       .then(setReload(!reload))
   }
 
+  const formatQuantity = (quantity) => {
+    return quantity > 1000
+      ? `${(quantity / 1000).toFixed(2)} kilograms`
+      : `${quantity} grams`
+  }
+
   return (
     <div>
       {usages &&
@@ -32,7 +38,7 @@ const Usages = ({ user }) => {
               {usage.country.toUpperCase()}
             </h2>
             <h3>
-              {usage.carbonGrams} grams of carbon released
+              {formatQuantity(usage.carbonGrams)} of carbon released
               {usage.recurring && <span> per day</span>}
             </h3>
             <button id={usage._id} onClick={handleDelete}>

@@ -50,6 +50,12 @@ const AddTrip = ({ user }) => {
     setEstimate(null)
   }
 
+  const formatQuantity = (quantity) => {
+    return quantity > 1000
+      ? `${(quantity / 1000).toFixed(2)} kilograms`
+      : `${quantity} grams`
+  }
+
   return (
     <div>
       <h1>
@@ -87,10 +93,13 @@ const AddTrip = ({ user }) => {
           {trip.frequency ? (
             <h2>
               Your trip releases an average of{' '}
-              {estimate.carbon_g * trip.frequency} grams of carbon per week.
+              {formatQuantity(estimate.carbon_g * trip.frequency)} of carbon per
+              week.
             </h2>
           ) : (
-            <h2>Your trip released {estimate.carbon_g} grams of carbon.</h2>
+            <h2>
+              Your trip released {formatQuantity(estimate.carbon_g)} of carbon.
+            </h2>
           )}
           <button onClick={handleSave}>Save this Trip</button>
         </div>
