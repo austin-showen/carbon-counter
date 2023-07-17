@@ -5,6 +5,8 @@ import { BACKEND_URL } from '../globals'
 
 const Vehicles = ({ user }) => {
   const [vehicles, setVehicles] = useState([])
+  const [trips, setTrips] = useState([])
+  // const [tripStats, setTripStats] = useState(null)
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -14,7 +16,14 @@ const Vehicles = ({ user }) => {
       )
       setVehicles(response.data)
     }
-    if (user) getVehicles()
+    const getTrips = async () => {
+      const response = await axios.get(`${BACKEND_URL}/trips/${user.username}`)
+      setTrips(response.data)
+    }
+    if (user) {
+      getVehicles()
+      getTrips()
+    }
   }, [reload])
 
   const handleDelete = async (e) => {
@@ -23,19 +32,29 @@ const Vehicles = ({ user }) => {
       .then(setReload(!reload))
   }
 
+  const countTrips = (vehicle) => {
+    return trips.filter((trip) => trip.vehicle === vehicle._id).length
+  }
+
   return (
-    <div>
-      <Link to="/vehicles/add">Add a Vehicle</Link>
+    <div className="Vehicles">
+      <h1>{user.username}'s Vehicles</h1>
+      <h3>
+        <Link to="/vehicles/add">Add a Vehicle</Link>
+      </h3>
+      <br></br>
       <div>
         {vehicles &&
           vehicles.map((vehicle) => (
             <div key={vehicle._id} className="card">
-              <h1>
+              <h2>
                 {vehicle.year} {vehicle.make} {vehicle.model}
-              </h1>
+              </h2>
+              <h3>{countTrips(vehicle)} trip(s) registered</h3>
               <Link to="/trips/add" state={{ vehicle: vehicle }}>
                 Add a Trip
               </Link>
+              <br></br>
               <button id={vehicle._id} onClick={handleDelete}>
                 Delete
               </button>

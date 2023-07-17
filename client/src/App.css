@@ -70,7 +70,7 @@ a:hover {
   margin-bottom: 50px;
 }
 
-.App, .AddVehicle, .AddVehicle div {
+.App, .AddVehicle, .Vehicles, .AddVehicle div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,6 +79,10 @@ a:hover {
 
 .AddVehicle div {
   min-width: 500px;
+}
+
+.Vehicles {
+  width: 500px;
 }
 
 .card {
