@@ -7,6 +7,7 @@ const usageSchema = new Schema(
     watts: { type: String, required: true },
     hours: { type: String, required: true },
     kwh: { type: String, required: true },
+    recurring: { type: Boolean, required: true },
     carbonGrams: { type: String, required: true },
     applianceName: { type: String, required: true },
     appliance: {

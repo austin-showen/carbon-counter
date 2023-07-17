@@ -46,6 +46,8 @@ const AddTrip = ({ user }) => {
 
   const handleRecurring = () => {
     setRecurring(!recurring)
+    setTrip({ distance: '', frequency: '' })
+    setEstimate(null)
   }
 
   return (

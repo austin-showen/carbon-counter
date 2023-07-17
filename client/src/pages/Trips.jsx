@@ -28,7 +28,16 @@ const Trips = ({ user }) => {
             <h3>
               {trip.year} {trip.make} {trip.model} - {trip.miles} miles
             </h3>
+            {trip.weeklyFrequency && (
+              <h3>{trip.weeklyFrequency} times per week</h3>
+            )}
             <h2>{trip.carbonGrams} grams of carbon</h2>
+            {trip.weeklyFrequency && (
+              <h3>
+                {trip.carbonGrams * trip.weeklyFrequency} grams of carbon per
+                week
+              </h3>
+            )}
             <button id={trip._id} onClick={handleDelete}>
               Delete
             </button>

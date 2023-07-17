@@ -13,6 +13,7 @@ const AddUsage = ({ user }) => {
 
   const [region, setRegion] = useState({ country: '', state: '' })
   const [hours, setHours] = useState('')
+  const [recurring, setRecurring] = useState(false)
   const [estimate, setEstimate] = useState(null)
 
   const handleChange = (e) => {
@@ -52,18 +53,40 @@ const AddUsage = ({ user }) => {
       region: region,
       hours: hours,
       carbonGrams: estimate.carbon_g,
-      applianceId: appliance._id
+      applianceId: appliance._id,
+      recurring: recurring
     })
     navigate('/usages')
+  }
+
+  const handleRecurring = () => {
+    setRecurring(!recurring)
+    setRegion({ country: '', state: '' })
+    setHours('')
+    setEstimate(null)
   }
 
   return (
     <div>
       <h1>How much carbon does your {appliance.name} use?</h1>
+      <button disabled={!recurring} onClick={handleRecurring}>
+        One-Time Usage
+      </button>
+      <button disabled={recurring} onClick={handleRecurring}>
+        Recurring Usage
+      </button>
+      {recurring ? (
+        <h2>
+          Enter the average number of hours you use the {appliance.name} per
+          day.
+        </h2>
+      ) : (
+        <h2>Enter the number of hours you used the {appliance.name}.</h2>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Number of hours used"
+          placeholder="Number of hours"
           value={hours}
           onChange={handleChange}
         />
@@ -107,9 +130,17 @@ const AddUsage = ({ user }) => {
       </form>
       {estimate && (
         <div>
-          <h2>
-            Your electricity usage released {estimate.carbon_g} grams of carbon.
-          </h2>
+          {recurring ? (
+            <h2>
+              Your electricity usage releases an average of {estimate.carbon_g}{' '}
+              grams of carbon per day.
+            </h2>
+          ) : (
+            <h2>
+              Your electricity usage released {estimate.carbon_g} grams of
+              carbon.
+            </h2>
+          )}
           <button onClick={handleSave}>Save this Usage</button>
         </div>
       )}

@@ -2,7 +2,8 @@ const { Appliance, User, Usage } = require('../models')
 const mongoose = require('mongoose')
 
 const create = async (req, res) => {
-  const { username, region, hours, carbonGrams, applianceId } = req.body
+  const { username, region, hours, carbonGrams, applianceId, recurring } =
+    req.body
   const user = await User.findOne({ username })
   const appliance = await Appliance.findOne({ _id: applianceId })
   const usage = new Usage()
@@ -13,6 +14,7 @@ const create = async (req, res) => {
     usage.watts = appliance.watts
     usage.hours = hours
     usage.kwh = (appliance.watts * hours) / 1000
+    usage.recurring = recurring
     usage.applianceName = appliance.name
     usage.appliance = applianceId
     usage.user = user._id

@@ -27,11 +27,14 @@ const Usages = ({ user }) => {
           <div key={usage._id} className="card">
             <h2>
               {usage.applianceName} for {usage.hours} hour
-              {usage.hours > 1 && <span>s</span>} in{' '}
+              {usage.hours !== '1' && <span>s</span>} in{' '}
               {usage.state && <span>{usage.state.toUpperCase()},</span>}{' '}
               {usage.country.toUpperCase()}
             </h2>
-            <h3>{usage.carbonGrams} grams of carbon released</h3>
+            <h3>
+              {usage.carbonGrams} grams of carbon released
+              {usage.recurring && <span> per day</span>}
+            </h3>
             <button id={usage._id} onClick={handleDelete}>
               Delete
             </button>
