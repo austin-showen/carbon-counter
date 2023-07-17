@@ -7,7 +7,7 @@ const tripSchema = new Schema(
     year: { type: String, required: true },
     miles: { type: String, required: true },
     carbonGrams: { type: String, required: true },
-    // date: { type: Date, required: true },
+    weeklyFrequency: { type: String, required: false },
     vehicle: {
       type: Schema.Types.ObjectId,
       ref: 'Vehicle',

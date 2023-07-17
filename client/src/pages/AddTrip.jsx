@@ -8,12 +8,13 @@ const AddTrip = ({ user }) => {
   const location = useLocation()
   const { vehicle } = location.state
 
-  const [distance, setDistance] = useState('')
+  const [trip, setTrip] = useState({ distance: '', frequency: '' })
+  const [recurring, setRecurring] = useState(false)
   const [estimate, setEstimate] = useState(null)
 
   const handleChange = (e) => {
     if (Number(e.target.value) || e.target.value === '')
-      setDistance(e.target.value)
+      setTrip({ ...trip, [e.target.id]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
@@ -21,7 +22,7 @@ const AddTrip = ({ user }) => {
     const payload = {
       type: 'vehicle',
       distance_unit: 'mi',
-      distance_value: Number(distance),
+      distance_value: Number(trip.distance),
       vehicle_model_id: vehicle.apiId
     }
     const response = await axios.post(
@@ -35,11 +36,16 @@ const AddTrip = ({ user }) => {
   const handleSave = async (e) => {
     await axios.post(`${BACKEND_URL}/trips/`, {
       username: user.username,
-      miles: distance,
+      miles: trip.distance,
       carbonGrams: estimate.carbon_g,
-      vehicleId: vehicle.apiId
+      vehicleId: vehicle.apiId,
+      weeklyFrequency: trip.frequency
     })
     navigate('/trips')
+  }
+
+  const handleRecurring = () => {
+    setRecurring(!recurring)
   }
 
   return (
@@ -47,14 +53,43 @@ const AddTrip = ({ user }) => {
       <h1>
         Taking your {vehicle.year} {vehicle.make} {vehicle.model} for a trip?
       </h1>
+      <button disabled={!recurring} onClick={handleRecurring}>
+        One-Time Trip
+      </button>
+      <button disabled={recurring} onClick={handleRecurring}>
+        Recurring Trip
+      </button>
       <h2>Enter the distance in miles.</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={distance} onChange={handleChange}></input>
+        <input
+          type="text"
+          id="distance"
+          value={trip.distance}
+          onChange={handleChange}
+        />
+        {recurring && (
+          <div>
+            <h3>How many times per week do you make this trip?</h3>
+            <input
+              type="text"
+              id="frequency"
+              value={trip.frequency}
+              onChange={handleChange}
+            />
+          </div>
+        )}
         <button type="submit">Calculate</button>
       </form>
       {estimate && (
         <div>
-          <h2>Your trip released {estimate.carbon_g} grams of carbon.</h2>
+          {trip.frequency ? (
+            <h2>
+              Your trip releases an average of{' '}
+              {estimate.carbon_g * trip.frequency} grams of carbon per week.
+            </h2>
+          ) : (
+            <h2>Your trip released {estimate.carbon_g} grams of carbon.</h2>
+          )}
           <button onClick={handleSave}>Save this Trip</button>
         </div>
       )}

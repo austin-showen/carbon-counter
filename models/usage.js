@@ -8,6 +8,7 @@ const usageSchema = new Schema(
     hours: { type: String, required: true },
     kwh: { type: String, required: true },
     carbonGrams: { type: String, required: true },
+    applianceName: { type: String, required: true },
     appliance: {
       type: Schema.Types.ObjectId,
       ref: 'Appliance',

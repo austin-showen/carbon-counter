@@ -13,6 +13,7 @@ const create = async (req, res) => {
     usage.watts = appliance.watts
     usage.hours = hours
     usage.kwh = (appliance.watts * hours) / 1000
+    usage.applianceName = appliance.name
     usage.appliance = applianceId
     usage.user = user._id
     usage.save()
