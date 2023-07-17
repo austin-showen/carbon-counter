@@ -68,9 +68,12 @@ const AddVehicle = ({ user }) => {
         <div>
           {selectedYear && (
             <div>
-              <h1 className="vehicle-selection">
-                Vehicle: {selectedYear} {selectedMake.name} {selectedModel.name}
-              </h1>
+              <div className="card vehicle-selection">
+                <h1>
+                  Vehicle: {selectedYear} {selectedMake.name}{' '}
+                  {selectedModel.name}
+                </h1>
+              </div>
               <button onClick={handleSubmit} disabled={!user.username}>
                 Add Vehicle
               </button>

@@ -14,7 +14,7 @@ input {
 
 header {
   width: 100vw;
-  height: 50px;
+  height: 70px;
   background-color: #4c3b4d;
   color: white;
   display: flex;
@@ -43,6 +43,7 @@ footer p {
 header div {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 header a {
@@ -66,7 +67,7 @@ a:hover {
 }
 
 .App {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .App, .AddVehicle, .AddVehicle div {
@@ -102,4 +103,8 @@ a:hover {
 
 .vehicle-selection {
   margin: 20px;
+}
+
+.home-link {
+  font-size: 24px;
 }
