@@ -47,18 +47,25 @@ const Vehicles = ({ user }) => {
       <br></br>
       {vehicles &&
         vehicles.map((vehicle) => (
-          <div key={vehicle._id} className="card">
-            <h2>
-              {vehicle.year} {vehicle.make} {vehicle.model}
-            </h2>
-            <h3>{countTrips(vehicle)} trip(s) registered</h3>
-            <Link to="/trips/add" state={{ vehicle: vehicle }}>
-              Add a Trip
-            </Link>
-            <br></br>
-            <button id={vehicle._id} onClick={handleDelete}>
-              Delete
-            </button>
+          <div key={vehicle._id} className="card vehicle-card">
+            <div>
+              <h2>
+                {vehicle.year} {vehicle.make} {vehicle.model}
+              </h2>
+              <h3>{countTrips(vehicle)} trip(s) registered</h3>
+              <Link to="/trips/add" state={{ vehicle: vehicle }}>
+                Add a Trip
+              </Link>
+            </div>
+            <div>
+              <button
+                id={vehicle._id}
+                onClick={handleDelete}
+                style={{ opacity: '60%' }}
+              >
+                <i>Delete</i>
+              </button>
+            </div>
           </div>
         ))}
     </div>

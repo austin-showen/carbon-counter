@@ -74,12 +74,22 @@ const AddUsage = ({ user }) => {
       </h1>
       <br></br>
       <div className="card">
-        <button disabled={!recurring} onClick={handleRecurring}>
-          One-Time Usage
-        </button>
-        <button disabled={recurring} onClick={handleRecurring}>
-          Recurring Usage
-        </button>
+        <div className="recurring-selector">
+          <button
+            id="usage-onetime"
+            disabled={!recurring}
+            onClick={handleRecurring}
+          >
+            One-Time Usage
+          </button>
+          <button
+            id="usage-recurring"
+            disabled={recurring}
+            onClick={handleRecurring}
+          >
+            Recurring Usage
+          </button>
+        </div>
         <br></br>
         <br></br>
         {recurring ? (

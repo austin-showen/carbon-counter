@@ -9,6 +9,7 @@ body {
 }
 
 input {
+  font-family: 'Inter', sans-serif;
   padding: 13px;
   box-shadow: inset 3px 3px 5px #6e5d6f;
   border-radius: 10px;
@@ -20,6 +21,22 @@ input:focus {
   box-shadow: 3px 3px 5px #6e5d6f;
   border: none;
   outline: none;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  padding: 8px 20px;
+  box-shadow: 3px 3px 5px #6e5d6f;
+  border: 1px solid #4c3b4d;
+  border-radius: 10px;
+}
+
+button:active {
+  box-shadow: inset 3px 3px 5px #6e5d6f;
+}
+
+button:disabled {
+  box-shadow: none;
 }
 
 header {
@@ -91,7 +108,7 @@ a:hover {
   min-width: 500px;
 }
 
-.Vehicles, .Appliances, .AddUsage div, .AddTrip div, .Vehicles div, .Appliances div {
+.Vehicles, .Appliances, .AddUsage div, .AddTrip div {
   width: 500px;
 }
 
@@ -132,4 +149,28 @@ a:hover {
 
 .darkgreen-text {
   color: #6a706e;
+}
+
+.vehicle-card, .appliance-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.recurring-selector {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#trip-onetime, #trip-recurring, #usage-onetime, #usage-recurring {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+#trip-onetime:disabled, #trip-recurring:disabled, #usage-onetime:disabled, #usage-recurring:disabled {
+  background-color: #6a706e;
+  color: white;
+  box-shadow: inset 3px 3px 5px #4c3b4d;
 }

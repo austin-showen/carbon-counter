@@ -35,16 +35,23 @@ const Appliances = ({ user }) => {
       <br></br>
       {appliances &&
         appliances.map((appliance) => (
-          <div key={appliance._id} className="card">
-            <h2>{appliance.name}</h2>
-            <h3>{appliance.watts} watts</h3>
-            <Link to="/usages/add" state={{ appliance: appliance }}>
-              Add Usage
-            </Link>
-            <br></br>
-            <button id={appliance._id} onClick={handleDelete}>
-              Delete
-            </button>
+          <div key={appliance._id} className="card appliance-card">
+            <div>
+              <h2>{appliance.name}</h2>
+              <h3>{appliance.watts} watts</h3>
+              <Link to="/usages/add" state={{ appliance: appliance }}>
+                Add Usage
+              </Link>
+            </div>
+            <div>
+              <button
+                id={appliance._id}
+                onClick={handleDelete}
+                style={{ opacity: '60%' }}
+              >
+                <i>Delete</i>
+              </button>
+            </div>
           </div>
         ))}
     </div>

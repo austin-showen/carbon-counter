@@ -67,12 +67,22 @@ const AddTrip = ({ user }) => {
       </h1>
       <br></br>
       <div class="card">
-        <button disabled={!recurring} onClick={handleRecurring}>
-          One-Time Trip
-        </button>
-        <button disabled={recurring} onClick={handleRecurring}>
-          Recurring Trip
-        </button>
+        <div class="recurring-selector">
+          <button
+            id="trip-onetime"
+            disabled={!recurring}
+            onClick={handleRecurring}
+          >
+            One-Time Trip
+          </button>
+          <button
+            id="trip-recurring"
+            disabled={recurring}
+            onClick={handleRecurring}
+          >
+            Recurring Trip
+          </button>
+        </div>
         <br></br>
         <br></br>
         <h3>Enter the distance in miles.</h3>
