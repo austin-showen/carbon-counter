@@ -30,38 +30,49 @@ const SignUp = () => {
   }
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <form className="signup card" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">
+          <h3>Username</h3>
+        </label>
         <input
           onChange={handleChange}
           name="username"
           type="text"
-          placeholder="Username"
+          placeholder="Enter a username"
           value={formValues.username}
           required
         />
       </div>
+      <br></br>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">
+          <h3>Password</h3>
+        </label>
         <input
           onChange={handleChange}
           type="password"
           name="password"
+          placeholder="Enter a password"
           value={formValues.password}
           required
         />
       </div>
+      <br></br>
       <div>
-        <label htmlFor="confirmPassword">Confirm Password</label>
+        <label htmlFor="confirmPassword">
+          <h3>Confirm Password</h3>
+        </label>
         <input
           onChange={handleChange}
           type="password"
           name="confirmPassword"
+          placeholder="Confirm password"
           value={formValues.confirmPassword}
           required
         />
       </div>
+      <br></br>
       <button
         disabled={
           !formValues.username ||
