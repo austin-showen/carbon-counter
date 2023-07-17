@@ -51,6 +51,9 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </main>
+      <footer>
+        <p>© 2023 Carbon Counter</p>
+      </footer>
     </div>
   )
 }

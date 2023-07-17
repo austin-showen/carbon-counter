@@ -5,7 +5,7 @@ const NavBar = ({ user, handleLogOut }) => {
     return (
       <header>
         <div>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Carbon Counter</NavLink>
           <NavLink to="/vehicles">Vehicles</NavLink>
           <NavLink to="/appliances">Appliances</NavLink>
           <NavLink to="/trips">Trips</NavLink>
@@ -22,7 +22,7 @@ const NavBar = ({ user, handleLogOut }) => {
     return (
       <header>
         <div>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Carbon Counter</NavLink>
         </div>
         <div>
           <NavLink to="/login">Log In</NavLink>
