@@ -67,83 +67,109 @@ const AddUsage = ({ user }) => {
   }
 
   return (
-    <div>
+    <div className="AddUsage">
       <h1>How much carbon does your {appliance.name} use?</h1>
-      <button disabled={!recurring} onClick={handleRecurring}>
-        One-Time Usage
-      </button>
-      <button disabled={recurring} onClick={handleRecurring}>
-        Recurring Usage
-      </button>
-      {recurring ? (
-        <h2>
-          Enter the average number of hours you use the {appliance.name} per
-          day.
-        </h2>
-      ) : (
-        <h2>Enter the number of hours you used the {appliance.name}.</h2>
-      )}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Number of hours"
-          value={hours}
-          onChange={handleChange}
-        />
-        <select id="country" value={region.country} onChange={handleSelect}>
-          <option value="" disabled>
-            Select Country
-          </option>
-          {countryArray.map((country) => (
-            <option key={country.code} value={country.code}>
-              {country.name}
-            </option>
-          ))}
-        </select>
-        {region.country === 'us' && (
-          <select id="state" value={region.state} onChange={handleSelect}>
-            <option value="" disabled>
-              Select State
-            </option>
-            {stateArray.map((state) => (
-              <option key={state.code} value={state.code}>
-                {state.name}
-              </option>
-            ))}
-          </select>
-        )}
-        {region.country === 'ca' && (
-          <select id="state" value={region.state} onChange={handleSelect}>
-            <option value="" disabled>
-              Select Province or Territory
-            </option>
-            {provinceArray.map((province) => (
-              <option key={province.code} value={province.code}>
-                {province.name}
-              </option>
-            ))}
-          </select>
-        )}
-        <button type="submit" disabled={!hours || !region.country}>
-          Estimate Usage
+      <br></br>
+      <div className="card">
+        <button disabled={!recurring} onClick={handleRecurring}>
+          One-Time Usage
         </button>
-      </form>
-      {estimate && (
-        <div>
-          {recurring ? (
-            <h2>
-              Your electricity usage releases an average of {estimate.carbon_g}{' '}
-              grams of carbon per day.
-            </h2>
-          ) : (
-            <h2>
-              Your electricity usage released {estimate.carbon_g} grams of
-              carbon.
-            </h2>
+        <button disabled={recurring} onClick={handleRecurring}>
+          Recurring Usage
+        </button>
+        <br></br>
+        <br></br>
+        {recurring ? (
+          <h3>
+            Enter the average number of hours you use the {appliance.name} per
+            day.
+          </h3>
+        ) : (
+          <h3>Enter the number of hours you used the {appliance.name}.</h3>
+        )}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Number of hours"
+            value={hours}
+            onChange={handleChange}
+          />
+          <br></br>
+          <br></br>
+          <h3>Select your country.</h3>
+          <select id="country" value={region.country} onChange={handleSelect}>
+            <option value="" disabled>
+              Select Country
+            </option>
+            {countryArray.map((country) => (
+              <option key={country.code} value={country.code}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+          <br></br>
+          <br></br>
+          {region.country === 'us' && (
+            <div>
+              <h3>Select your state.</h3>
+              <select id="state" value={region.state} onChange={handleSelect}>
+                <option value="" disabled>
+                  Select State
+                </option>
+                {stateArray.map((state) => (
+                  <option key={state.code} value={state.code}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+              <br></br>
+              <br></br>
+            </div>
           )}
-          <button onClick={handleSave}>Save this Usage</button>
-        </div>
-      )}
+          {region.country === 'ca' && (
+            <div>
+              <h3>Select your Province/Territory.</h3>
+              <select id="state" value={region.state} onChange={handleSelect}>
+                <option value="" disabled>
+                  Select Province or Territory
+                </option>
+                {provinceArray.map((province) => (
+                  <option key={province.code} value={province.code}>
+                    {province.name}
+                  </option>
+                ))}
+              </select>
+              <br></br>
+              <br></br>
+            </div>
+          )}
+          <button
+            type="submit"
+            disabled={!hours || !region.country || estimate}
+          >
+            Estimate Usage
+          </button>
+          <br></br>
+          <br></br>
+        </form>
+        {estimate && (
+          <div>
+            {recurring ? (
+              <h2>
+                Your electricity usage releases an average of{' '}
+                {estimate.carbon_g} grams of carbon per day.
+              </h2>
+            ) : (
+              <h2>
+                Your electricity usage released {estimate.carbon_g} grams of
+                carbon.
+              </h2>
+            )}
+            <br></br>
+            <button onClick={handleSave}>Save this Usage</button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

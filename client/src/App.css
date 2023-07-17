@@ -70,7 +70,7 @@ a:hover {
   margin-bottom: 50px;
 }
 
-.App, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddVehicle div {
+.App, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,7 @@ a:hover {
   min-width: 500px;
 }
 
-.Vehicles, .Appliances, .AddTrip div, .Vehicles div, .Appliances div {
+.Vehicles, .Appliances, .AddUsage div, .AddTrip div, .Vehicles div, .Appliances div {
   width: 500px;
 }
 

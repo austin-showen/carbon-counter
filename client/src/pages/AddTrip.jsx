@@ -96,7 +96,12 @@ const AddTrip = ({ user }) => {
               <br></br>
             </div>
           )}
-          <button type="submit" disabled={estimate}>
+          <button
+            type="submit"
+            disabled={
+              !trip.distance || (recurring && !trip.frequency) || estimate
+            }
+          >
             Calculate
           </button>
           <br></br>
