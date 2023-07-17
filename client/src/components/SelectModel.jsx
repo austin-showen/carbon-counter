@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import SelectYear from './SelectYear'
 import { API_KEY } from '../globals'
 
 const SelectModel = ({
@@ -8,7 +7,8 @@ const SelectModel = ({
   models,
   setModels,
   selectedModel,
-  setSelectedModel
+  setSelectedModel,
+  setSelectedYear
 }) => {
   const [search, setSearch] = useState('')
 
@@ -53,6 +53,7 @@ const SelectModel = ({
 
   const handleReset = (e) => {
     setSelectedModel({})
+    setSelectedYear('')
     setSearch('')
   }
 

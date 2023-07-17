@@ -8,6 +8,10 @@ body {
   color: #4c3b4d
 }
 
+input {
+  padding: 10px;
+}
+
 header {
   width: 100vw;
   height: 50px;
@@ -43,11 +47,20 @@ a:hover {
   color: #6a706e;
 }
 
-.AddVehicle, .SelectModel {
+.App, .AddVehicle, .AddVehicle div {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.AddVehicle div {
+  width: 500px;
+}
+
+
 .card {
+  width: 100%;
   padding: 20px;
   margin: 20px;
   border-radius: 20px;

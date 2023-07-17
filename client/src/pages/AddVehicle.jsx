@@ -38,6 +38,7 @@ const AddVehicle = ({ user }) => {
             selectedMake={selectedMake}
             setSelectedMake={setSelectedMake}
             setSelectedModel={setSelectedModel}
+            setSelectedYear={setSelectedYear}
           />
         </div>
         <div>
@@ -48,6 +49,7 @@ const AddVehicle = ({ user }) => {
               setModels={setModels}
               selectedModel={selectedModel}
               setSelectedModel={setSelectedModel}
+              setSelectedYear={setSelectedYear}
             />
           )}
         </div>

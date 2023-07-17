@@ -7,7 +7,8 @@ const SelectMake = ({
   setMakes,
   selectedMake,
   setSelectedMake,
-  setSelectedModel
+  setSelectedModel,
+  setSelectedYear
 }) => {
   const [search, setSearch] = useState('')
 
@@ -51,6 +52,7 @@ const SelectMake = ({
   const handleReset = (e) => {
     setSelectedMake({})
     setSelectedModel({})
+    setSelectedYear('')
     setSearch('')
   }
 
