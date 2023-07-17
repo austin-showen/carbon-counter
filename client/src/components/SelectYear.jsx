@@ -28,6 +28,8 @@ const SelectYear = ({
   if (selectedModel.name) {
     return (
       <div>
+        {!selectedYear && <h1>Select the Year:</h1>}
+        {selectedYear && <h2>Year: {selectedYear}</h2>}
         <form>
           <select value={selectedYear} onChange={handleChange}>
             <option value="" disabled>

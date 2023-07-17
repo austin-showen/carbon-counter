@@ -64,8 +64,10 @@ const SelectModel = ({
           {!selectedModel.name && <h1>Select the Model:</h1>}
           {selectedModel.name && (
             <div>
-              <h1>{selectedModel.name}</h1>
-              <button onClick={handleReset}>Reset</button>
+              <h2>Model: {selectedModel.name}</h2>
+              <button class="reset" onClick={handleReset}>
+                Reset
+              </button>
             </div>
           )}
           {!selectedModel.name && (
@@ -81,13 +83,19 @@ const SelectModel = ({
               </form>
               <div>
                 {models.filteredModels &&
-                  models.filteredModels.slice(0, 10).map((model) => (
-                    <div key={model} className="card" onClick={handleClick}>
+                  models.filteredModels.slice(0, 8).map((model) => (
+                    <div
+                      key={model}
+                      className="card hover-green"
+                      onClick={handleClick}
+                    >
                       {model}
                     </div>
                   ))}
-                {models.filteredModels && models.filteredModels.length > 10 && (
-                  <div className="card">...</div>
+                {models.filteredModels && models.filteredModels.length > 8 && (
+                  <div className="card green">
+                    <i>{models.filteredModels.length - 8} more...</i>
+                  </div>
                 )}
               </div>
             </div>

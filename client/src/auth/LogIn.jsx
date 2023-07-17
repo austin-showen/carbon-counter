@@ -8,7 +8,7 @@ const LogIn = ({ setUser }) => {
   const [formValues, setFormValues] = useState({ username: '', password: '' })
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    setFormValues({ ...formValues, [e.target.id]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
@@ -20,28 +20,35 @@ const LogIn = ({ setUser }) => {
   }
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
+    <form className="login card" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">
+          <h3>Username</h3>
+        </label>
         <input
           onChange={handleChange}
-          name="username"
+          id="username"
           type="text"
           placeholder="Enter your username"
           value={formValues.username}
           required
         />
       </div>
+      <br></br>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">
+          <h3>Password</h3>
+        </label>
         <input
           onChange={handleChange}
           type="password"
-          name="password"
+          id="password"
+          placeholder="Enter your password"
           value={formValues.password}
           required
         />
       </div>
+      <br></br>
       <button disabled={!formValues.username || !formValues.password}>
         Log In
       </button>

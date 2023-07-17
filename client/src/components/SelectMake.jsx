@@ -61,8 +61,10 @@ const SelectMake = ({
       {!selectedMake.name && <h1>Select the Make:</h1>}
       {selectedMake.name && (
         <div>
-          <h1>Make: {selectedMake.name}</h1>
-          <button onClick={handleReset}>Reset</button>
+          <h2>Make: {selectedMake.name}</h2>
+          <button class="reset" onClick={handleReset}>
+            Reset
+          </button>
         </div>
       )}
       {!selectedMake.name && (
@@ -78,13 +80,19 @@ const SelectMake = ({
           </form>
           <div>
             {makes.filteredMakes &&
-              makes.filteredMakes.slice(0, 10).map((make) => (
-                <div key={make} className="card" onClick={handleClick}>
+              makes.filteredMakes.slice(0, 8).map((make) => (
+                <div
+                  key={make}
+                  className="card hover-green"
+                  onClick={handleClick}
+                >
                   {make}
                 </div>
               ))}
-            {makes.filteredMakes && makes.filteredMakes.length > 10 && (
-              <div className="card">...</div>
+            {makes.filteredMakes && makes.filteredMakes.length > 8 && (
+              <div className="card green">
+                <i>{makes.filteredMakes.length - 8} more...</i>
+              </div>
             )}
           </div>
         </div>

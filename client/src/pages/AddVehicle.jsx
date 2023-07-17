@@ -68,9 +68,9 @@ const AddVehicle = ({ user }) => {
         <div>
           {selectedYear && (
             <div>
-              <h2>
-                {selectedYear} {selectedMake.name} {selectedModel.name}
-              </h2>
+              <h1 className="vehicle-selection">
+                Vehicle: {selectedYear} {selectedMake.name} {selectedModel.name}
+              </h1>
               <button onClick={handleSubmit} disabled={!user.username}>
                 Add Vehicle
               </button>

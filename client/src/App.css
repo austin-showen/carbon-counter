@@ -20,6 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 footer {
@@ -64,6 +65,10 @@ a:hover {
   color: #6a706e;
 }
 
+.App {
+  margin-bottom: 40px;
+}
+
 .App, .AddVehicle, .AddVehicle div {
   display: flex;
   flex-direction: column;
@@ -72,17 +77,29 @@ a:hover {
 }
 
 .AddVehicle div {
-  width: 500px;
+  min-width: 500px;
 }
 
 .card {
   width: 100%;
   padding: 20px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 20px;
   box-shadow: 5px 5px 10px #4c3b4d;
 }
 
-.card:hover {
+.hover-green:hover {
   background-color: #b8dccb;
+}
+
+.green {
+  background-color: #b8dccb;
+}
+
+.reset {
+  margin: 10px 0 20px 0;
+}
+
+.vehicle-selection {
+  margin: 20px;
 }
