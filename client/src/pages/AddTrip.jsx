@@ -57,53 +57,70 @@ const AddTrip = ({ user }) => {
   }
 
   return (
-    <div>
+    <div className="AddTrip">
       <h1>
         Taking your {vehicle.year} {vehicle.make} {vehicle.model} for a trip?
       </h1>
-      <button disabled={!recurring} onClick={handleRecurring}>
-        One-Time Trip
-      </button>
-      <button disabled={recurring} onClick={handleRecurring}>
-        Recurring Trip
-      </button>
-      <h2>Enter the distance in miles.</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="distance"
-          value={trip.distance}
-          onChange={handleChange}
-        />
-        {recurring && (
+      <br></br>
+      <div class="card">
+        <button disabled={!recurring} onClick={handleRecurring}>
+          One-Time Trip
+        </button>
+        <button disabled={recurring} onClick={handleRecurring}>
+          Recurring Trip
+        </button>
+        <br></br>
+        <br></br>
+        <h3>Enter the distance in miles.</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            id="distance"
+            placeholder="Number of miles"
+            value={trip.distance}
+            onChange={handleChange}
+          />
+          <br></br>
+          <br></br>
+          {recurring && (
+            <div>
+              <h3>How many times per week do you make this trip?</h3>
+              <input
+                type="text"
+                id="frequency"
+                placeholder="Trips per week"
+                value={trip.frequency}
+                onChange={handleChange}
+              />
+              <br></br>
+              <br></br>
+            </div>
+          )}
+          <button type="submit" disabled={estimate}>
+            Calculate
+          </button>
+          <br></br>
+          <br></br>
+        </form>
+        {estimate && (
           <div>
-            <h3>How many times per week do you make this trip?</h3>
-            <input
-              type="text"
-              id="frequency"
-              value={trip.frequency}
-              onChange={handleChange}
-            />
+            {trip.frequency ? (
+              <h2>
+                Your trip releases an average of{' '}
+                {formatQuantity(estimate.carbon_g * trip.frequency)} of carbon
+                per week.
+              </h2>
+            ) : (
+              <h2>
+                Your trip released {formatQuantity(estimate.carbon_g)} of
+                carbon.
+              </h2>
+            )}
+            <br></br>
+            <button onClick={handleSave}>Save This Trip</button>
           </div>
         )}
-        <button type="submit">Calculate</button>
-      </form>
-      {estimate && (
-        <div>
-          {trip.frequency ? (
-            <h2>
-              Your trip releases an average of{' '}
-              {formatQuantity(estimate.carbon_g * trip.frequency)} of carbon per
-              week.
-            </h2>
-          ) : (
-            <h2>
-              Your trip released {formatQuantity(estimate.carbon_g)} of carbon.
-            </h2>
-          )}
-          <button onClick={handleSave}>Save this Trip</button>
-        </div>
-      )}
+      </div>
     </div>
   )
 }
