@@ -40,6 +40,7 @@ const SignUp = () => {
           name="username"
           type="text"
           placeholder="Enter a username"
+          autoComplete="off"
           value={formValues.username}
           required
         />
@@ -54,6 +55,7 @@ const SignUp = () => {
           type="password"
           name="password"
           placeholder="Enter a password"
+          autoComplete="off"
           value={formValues.password}
           required
         />
@@ -68,6 +70,7 @@ const SignUp = () => {
           type="password"
           name="confirmPassword"
           placeholder="Confirm password"
+          autoComplete="off"
           value={formValues.confirmPassword}
           required
         />

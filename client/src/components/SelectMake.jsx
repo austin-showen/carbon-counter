@@ -76,6 +76,7 @@ const SelectMake = ({
               placeholder="Search for a Make"
               value={search}
               onChange={handleChange}
+              autoComplete="off"
             ></input>
           </form>
           <div>

@@ -77,6 +77,7 @@ const SelectModel = ({
                   type="text"
                   name="search"
                   placeholder="Search for a Model"
+                  autoComplete="off"
                   value={search}
                   onChange={handleChange}
                 ></input>

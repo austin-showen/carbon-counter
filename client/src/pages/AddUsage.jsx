@@ -110,6 +110,7 @@ const AddUsage = ({ user }) => {
             <input
               type="text"
               placeholder="Number of hours"
+              autoComplete="off"
               value={hours}
               onChange={handleChange}
             />

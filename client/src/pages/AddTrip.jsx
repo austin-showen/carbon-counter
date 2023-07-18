@@ -94,6 +94,7 @@ const AddTrip = ({ user }) => {
               type="text"
               id="distance"
               placeholder="Number of miles"
+              autoComplete="off"
               value={trip.distance}
               onChange={handleChange}
             />
@@ -106,6 +107,7 @@ const AddTrip = ({ user }) => {
                   type="text"
                   id="frequency"
                   placeholder="Trips per week"
+                  autoComplete="off"
                   value={trip.frequency}
                   onChange={handleChange}
                 />

@@ -111,6 +111,18 @@ a:hover {
   margin-bottom: 50px;
 }
 
+.Home {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 50px;
+  border-radius: 40px;
+  box-shadow: 0 0 100px white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div {
   display: flex;
   flex-direction: column;

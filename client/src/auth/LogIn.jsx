@@ -30,6 +30,7 @@ const LogIn = ({ setUser }) => {
           id="username"
           type="text"
           placeholder="Enter your username"
+          autoComplete="off"
           value={formValues.username}
           required
         />
@@ -44,6 +45,7 @@ const LogIn = ({ setUser }) => {
           type="password"
           id="password"
           placeholder="Enter your password"
+          autoComplete="off"
           value={formValues.password}
           required
         />

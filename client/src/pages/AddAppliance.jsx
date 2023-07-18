@@ -40,6 +40,7 @@ const AddAppliance = ({ user }) => {
             type="text"
             id="name"
             placeholder="Desktop PC"
+            autoComplete="off"
             value={appliance.name}
             onChange={handleChangeName}
           />
@@ -52,6 +53,7 @@ const AddAppliance = ({ user }) => {
             type="text"
             id="watts"
             placeholder="200"
+            autoComplete="off"
             value={appliance.watts}
             onChange={handleChangeWatts}
           />
