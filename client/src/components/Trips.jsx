@@ -44,23 +44,31 @@ const Trips = ({ user, filter }) => {
         <h1>Trips</h1>
         {trips &&
           trips.map((trip) => (
-            <div key={trip._id} className="card">
-              <h3>
-                {trip.year} {trip.make} {trip.model} - {trip.miles} miles
-              </h3>
-              {trip.weeklyFrequency && (
-                <h3>{trip.weeklyFrequency} times per week</h3>
-              )}
-              <h2>{formatQuantity(trip.carbonGrams)} of carbon</h2>
-              {trip.weeklyFrequency && (
+            <div key={trip._id} className="card trip-card">
+              <div>
                 <h3>
-                  {formatQuantity(trip.carbonGrams * trip.weeklyFrequency)} of
-                  carbon per week
+                  {trip.year} {trip.make} {trip.model} - {trip.miles} miles
                 </h3>
-              )}
-              <button id={trip._id} onClick={handleDelete}>
-                Delete
-              </button>
+                {trip.weeklyFrequency && (
+                  <h3>{trip.weeklyFrequency} times per week</h3>
+                )}
+                <h2>{formatQuantity(trip.carbonGrams)} of carbon</h2>
+                {trip.weeklyFrequency && (
+                  <h3>
+                    {formatQuantity(trip.carbonGrams * trip.weeklyFrequency)} of
+                    carbon per week
+                  </h3>
+                )}
+              </div>
+              <div>
+                <button
+                  id={trip._id}
+                  onClick={handleDelete}
+                  style={{ opacity: '60%' }}
+                >
+                  <i>Delete</i>
+                </button>
+              </div>
             </div>
           ))}
       </div>

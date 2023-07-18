@@ -168,7 +168,7 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
   color: #6a706e;
 }
 
-.vehicle-card, .appliance-card {
+.vehicle-card, .appliance-card, .trip-card, .usage-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
