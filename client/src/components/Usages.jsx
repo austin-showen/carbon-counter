@@ -30,7 +30,8 @@ const Usages = ({ user }) => {
     return <h1>Log in to access this page.</h1>
   } else {
     return (
-      <div>
+      <div className="Usages">
+        <h1>Electronic Usage</h1>
         {usages &&
           usages.map((usage) => (
             <div key={usage._id} className="card">

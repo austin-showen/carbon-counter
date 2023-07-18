@@ -30,7 +30,8 @@ const Trips = ({ user }) => {
     return <h1>Log in to access this page.</h1>
   } else {
     return (
-      <div>
+      <div className="Trips">
+        <h1>Trips</h1>
         {trips &&
           trips.map((trip) => (
             <div key={trip._id} className="card">

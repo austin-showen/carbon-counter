@@ -4,8 +4,7 @@ import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import Vehicles from './pages/Vehicles'
 import Appliances from './pages/Appliances'
-import Trips from './pages/Trips'
-import Usages from './pages/Usages'
+import Footprint from './pages/Footprint'
 import LogIn from './auth/LogIn'
 import SignUp from './auth/SignUp'
 import NavBar from './components/NavBar'
@@ -48,10 +47,9 @@ const App = () => {
             path="/appliances/add"
             element={<AddAppliance user={user} />}
           />
-          <Route path="/trips" element={<Trips user={user} />} />
           <Route path="/trips/add" element={<AddTrip user={user} />} />
-          <Route path="/usages" element={<Usages user={user} />} />
           <Route path="/usages/add" element={<AddUsage user={user} />} />
+          <Route path="/footprint" element={<Footprint user={user} />} />
           <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

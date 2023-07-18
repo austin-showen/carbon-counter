@@ -10,8 +10,7 @@ const NavBar = ({ user, handleLogOut }) => {
           </NavLink>
           <NavLink to="/vehicles">Vehicles</NavLink>
           <NavLink to="/appliances">Appliances</NavLink>
-          <NavLink to="/trips">Trips</NavLink>
-          <NavLink to="/usages">Electronic Usage</NavLink>
+          <NavLink to="/footprint">Carbon Footprint</NavLink>
         </div>
         <div>
           <NavLink to="/" onClick={handleLogOut}>
