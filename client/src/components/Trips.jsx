@@ -2,9 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { BACKEND_URL } from '../globals'
 
-const Trips = ({ user, filter }) => {
+const Trips = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
   const [trips, setTrips] = useState([])
-  const [totals, setTotals] = useState({ onetime: 0, recurring: 0 })
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -22,7 +21,9 @@ const Trips = ({ user, filter }) => {
           break
       }
     }
-    if (user) getTrips()
+    if (user) {
+      getTrips()
+    }
   }, [reload, filter])
 
   useEffect(() => {
@@ -36,20 +37,15 @@ const Trips = ({ user, filter }) => {
           acc + Number(trip.carbonGrams) * Number(trip.weeklyFrequency),
         0
       )
-    setTotals({ onetime: onetimeTotal, recurring: recurringTotal })
+    setFootprint({
+      ...footprint,
+      trips: { onetime: onetimeTotal, annual: (recurringTotal / 7) * 365.25 }
+    })
   }, [trips])
 
   const handleDelete = async (e) => {
     await axios.delete(`${BACKEND_URL}/trips/${e.target.id}`)
     setReload(!reload)
-  }
-
-  const formatQuantity = (quantity) => {
-    return quantity > 1000000
-      ? `${(quantity / 1000000).toFixed(2)} metric tons`
-      : quantity > 1000
-      ? `${(quantity / 1000).toFixed(2)} kilograms`
-      : `${quantity} grams`
   }
 
   if (!user) {
@@ -59,18 +55,17 @@ const Trips = ({ user, filter }) => {
       <div className="Trips">
         <h1>Trips</h1>
         <br></br>
-        {totals.onetime > 0 && (
+        {footprint.trips.onetime > 0 && (
           <h3>
-            One-time: {formatQuantity(totals.onetime)}
+            One-time: {formatQuantity(footprint.trips.onetime)}
             <br></br>
             <br></br>
           </h3>
         )}
-        {totals.recurring > 0 && (
+        {footprint.trips.annual > 0 && (
           <div style={{ textAlign: 'center' }}>
             <h3>
-              Recurring: {formatQuantity(totals.recurring)} per week
-              <br />({formatQuantity((totals.recurring / 7) * 365.25)} per year)
+              Recurring: {formatQuantity(footprint.trips.annual)} per year
             </h3>
             <br></br>
           </div>

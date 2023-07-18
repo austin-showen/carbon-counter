@@ -2,9 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { BACKEND_URL } from '../globals'
 
-const Usages = ({ user, filter }) => {
+const Usages = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
   const [usages, setUsages] = useState([])
-  const [totals, setTotals] = useState({ onetime: 0, recurring: 0 })
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -32,20 +31,15 @@ const Usages = ({ user, filter }) => {
     const recurringTotal = usages
       .filter((usage) => usage.recurring)
       .reduce((acc, usage) => acc + Number(usage.carbonGrams), 0)
-    setTotals({ onetime: onetimeTotal, recurring: recurringTotal })
+    setFootprint({
+      ...footprint,
+      usages: { onetime: onetimeTotal, annual: recurringTotal * 365.25 }
+    })
   }, [usages])
 
   const handleDelete = async (e) => {
     await axios.delete(`${BACKEND_URL}/usages/${e.target.id}`)
     setReload(!reload)
-  }
-
-  const formatQuantity = (quantity) => {
-    return quantity > 1000000
-      ? `${(quantity / 1000000).toFixed(2)} metric tons`
-      : quantity > 1000
-      ? `${(quantity / 1000).toFixed(2)} kilograms`
-      : `${quantity} grams`
   }
 
   if (!user) {
@@ -55,18 +49,17 @@ const Usages = ({ user, filter }) => {
       <div className="Usages">
         <h1>Electronic Usage</h1>
         <br></br>
-        {totals.onetime > 0 && (
+        {footprint.usages.onetime > 0 && (
           <h3>
-            One-time: {formatQuantity(totals.onetime)}
+            One-time: {formatQuantity(footprint.usages.onetime)}
             <br></br>
             <br></br>
           </h3>
         )}
-        {totals.recurring > 0 && (
+        {footprint.usages.annual > 0 && (
           <div style={{ textAlign: 'center' }}>
             <h3>
-              Recurring: {formatQuantity(totals.recurring)} per day
-              <br />({formatQuantity(totals.recurring * 365.25)} per year)
+              Recurring: {formatQuantity(footprint.usages.annual)} per year
             </h3>
             <br></br>
           </div>

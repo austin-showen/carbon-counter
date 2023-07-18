@@ -244,3 +244,8 @@ select {
   padding: 5px;
   margin-top: 5px;
 }
+
+.totals {
+  max-width: 800px;
+  text-align: center;
+}
