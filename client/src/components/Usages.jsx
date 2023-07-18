@@ -4,6 +4,7 @@ import { BACKEND_URL } from '../globals'
 
 const Usages = ({ user, filter }) => {
   const [usages, setUsages] = useState([])
+  const [totals, setTotals] = useState({ onetime: 0, recurring: 0 })
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -24,6 +25,16 @@ const Usages = ({ user, filter }) => {
     if (user) getUsages()
   }, [reload, filter])
 
+  useEffect(() => {
+    const onetimeTotal = usages
+      .filter((usage) => !usage.recurring)
+      .reduce((acc, usage) => acc + Number(usage.carbonGrams), 0)
+    const recurringTotal = usages
+      .filter((usage) => usage.recurring)
+      .reduce((acc, usage) => acc + Number(usage.carbonGrams), 0)
+    setTotals({ onetime: onetimeTotal, recurring: recurringTotal })
+  }, [usages])
+
   const handleDelete = async (e) => {
     await axios
       .delete(`${BACKEND_URL}/usages/${e.target.id}`)
@@ -31,7 +42,9 @@ const Usages = ({ user, filter }) => {
   }
 
   const formatQuantity = (quantity) => {
-    return quantity > 1000
+    return quantity > 1000000
+      ? `${(quantity / 1000000).toFixed(2)} metric tonnes`
+      : quantity > 1000
       ? `${(quantity / 1000).toFixed(2)} kilograms`
       : `${quantity} grams`
   }
@@ -42,6 +55,12 @@ const Usages = ({ user, filter }) => {
     return (
       <div className="Usages">
         <h1>Electronic Usage</h1>
+        {totals.onetime > 0 && (
+          <h3>One-time: {formatQuantity(totals.onetime)}</h3>
+        )}
+        {totals.recurring > 0 && (
+          <h3>Recurring: {formatQuantity(totals.recurring)} per day</h3>
+        )}
         {usages &&
           usages.map((usage) => (
             <div key={usage._id} className="card usage-card">

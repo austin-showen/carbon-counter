@@ -219,3 +219,10 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
   flex-direction: column;
   align-items: center;
 }
+
+.login, .signup {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
