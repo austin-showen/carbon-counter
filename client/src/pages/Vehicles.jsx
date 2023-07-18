@@ -36,6 +36,11 @@ const Vehicles = ({ user }) => {
     return trips.filter((trip) => trip.vehicle === vehicle._id).length
   }
 
+  const calculateAverage = (vehicle) => {
+    const vehicleTrip = trips.find((trip) => trip.vehicle === vehicle._id)
+    return (vehicleTrip.carbonGrams / vehicleTrip.miles).toFixed(0)
+  }
+
   return (
     <div className="Vehicles">
       <h1>
@@ -53,6 +58,9 @@ const Vehicles = ({ user }) => {
                 {vehicle.year} {vehicle.make} {vehicle.model}
               </h2>
               <h3>{countTrips(vehicle)} trip(s) registered</h3>
+              {countTrips(vehicle) > 0 && (
+                <h3>{calculateAverage(vehicle)} grams of carbon / mile</h3>
+              )}
               <Link to="/trips/add" state={{ vehicle: vehicle }}>
                 Add a Trip
               </Link>

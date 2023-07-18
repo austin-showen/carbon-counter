@@ -14,7 +14,8 @@ body {
   font-family: 'Inter', sans-serif;
   background-image: url('https://images.unsplash.com/photo-1494216928456-ae75fd96603d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
   background-size: auto;
-  background-position-y: -200px;
+  background-position-y: -250px;
+  background-attachment: fixed;
   color: var(--color-5);
 }
 
@@ -58,6 +59,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  opacity: 95%;
 }
 
 footer {
@@ -71,6 +73,7 @@ footer {
   display: flex;
   justify-content: end;
   align-items: center;
+  opacity: 95%;
 }
 
 footer p {
@@ -129,6 +132,7 @@ a:hover {
   border-radius: 20px;
   background-color: #a7cbba;
   box-shadow: 5px 5px 10px var(--color-3);
+  opacity: 95%;
 }
 
 .AddAppliance {
@@ -156,6 +160,7 @@ a:hover {
 
 .home-link {
   font-size: 24px;
+  color: #9cbb9c;
 }
 
 .darkgreen-text {
