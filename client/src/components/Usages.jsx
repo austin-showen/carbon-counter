@@ -48,12 +48,12 @@ const Usages = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
     return (
       <div className="Usages">
         <h1>Electronic Usage</h1>
-        <br></br>
+        <br />
         {footprint.usages.onetime > 0 && (
           <h3>
             One-time: {formatQuantity(footprint.usages.onetime)}
-            <br></br>
-            <br></br>
+            <br />
+            <br />
           </h3>
         )}
         {footprint.usages.annual > 0 && (
@@ -61,7 +61,7 @@ const Usages = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
             <h3>
               Recurring: {formatQuantity(footprint.usages.annual)} per year
             </h3>
-            <br></br>
+            <br />
           </div>
         )}
         {usages && usages.length > 0 ? (

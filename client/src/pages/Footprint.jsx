@@ -37,7 +37,7 @@ const Footprint = ({ user }) => {
             <span className="darkgreen-text">{user.username}</span>'s Carbon
             Footprint
           </h1>
-          <br></br>
+          <br />
           <div className="footprint-buttons">
             <button
               id="filter-recurring"
@@ -83,7 +83,7 @@ const Footprint = ({ user }) => {
         </div>
         <div className="card totals">
           <h1>Totals:</h1>
-          <br></br>
+          <br />
           {footprint.trips.onetime + footprint.usages.onetime > 0 && (
             <div>
               <h2>
@@ -100,7 +100,7 @@ const Footprint = ({ user }) => {
                 )}
                 !
               </h3>
-              <br></br>
+              <br />
             </div>
           )}
           {footprint.trips.annual + footprint.usages.annual > 0 && (
@@ -117,7 +117,7 @@ const Footprint = ({ user }) => {
                 {randomAnimal(footprint.trips.annual + footprint.usages.annual)}
                 !
               </h3>
-              <br></br>
+              <br />
             </div>
           )}
         </div>

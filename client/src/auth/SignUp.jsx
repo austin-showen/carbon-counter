@@ -45,7 +45,7 @@ const SignUp = () => {
           required
         />
       </div>
-      <br></br>
+      <br />
       <div>
         <label htmlFor="password">
           <h3>Password</h3>
@@ -60,7 +60,7 @@ const SignUp = () => {
           required
         />
       </div>
-      <br></br>
+      <br />
       <div>
         <label htmlFor="confirmPassword">
           <h3>Confirm Password</h3>
@@ -75,7 +75,7 @@ const SignUp = () => {
           required
         />
       </div>
-      <br></br>
+      <br />
       <button
         disabled={
           !formValues.username ||

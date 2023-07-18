@@ -44,8 +44,8 @@ const AddAppliance = ({ user }) => {
             value={appliance.name}
             onChange={handleChangeName}
           />
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <h3>
             <label htmlFor="name">Watts: </label>
           </h3>
@@ -57,8 +57,8 @@ const AddAppliance = ({ user }) => {
             value={appliance.watts}
             onChange={handleChangeWatts}
           />
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <button type="submit">Add Appliance</button>
         </form>
         <div>

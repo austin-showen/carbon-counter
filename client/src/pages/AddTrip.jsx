@@ -68,7 +68,7 @@ const AddTrip = ({ user }) => {
           </span>{' '}
           for a trip?
         </h1>
-        <br></br>
+        <br />
         <div className="card">
           <div className="recurring-selector">
             <button
@@ -86,8 +86,8 @@ const AddTrip = ({ user }) => {
               Recurring Trip
             </button>
           </div>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <h3>Enter the distance in miles.</h3>
           <form onSubmit={handleSubmit}>
             <input
@@ -98,8 +98,8 @@ const AddTrip = ({ user }) => {
               value={trip.distance}
               onChange={handleChange}
             />
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             {recurring && (
               <div>
                 <h3>How many times per week do you make this trip?</h3>
@@ -111,8 +111,8 @@ const AddTrip = ({ user }) => {
                   value={trip.frequency}
                   onChange={handleChange}
                 />
-                <br></br>
-                <br></br>
+                <br />
+                <br />
               </div>
             )}
             <button
@@ -123,8 +123,8 @@ const AddTrip = ({ user }) => {
             >
               Calculate
             </button>
-            <br></br>
-            <br></br>
+            <br />
+            <br />
           </form>
           {estimate && (
             <div>
@@ -140,7 +140,7 @@ const AddTrip = ({ user }) => {
                   carbon.
                 </h2>
               )}
-              <br></br>
+              <br />
               <button onClick={handleSave}>Save This Trip</button>
             </div>
           )}

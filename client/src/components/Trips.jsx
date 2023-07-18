@@ -54,12 +54,12 @@ const Trips = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
     return (
       <div className="Trips">
         <h1>Trips</h1>
-        <br></br>
+        <br />
         {footprint.trips.onetime > 0 && (
           <h3>
             One-time: {formatQuantity(footprint.trips.onetime)}
-            <br></br>
-            <br></br>
+            <br />
+            <br />
           </h3>
         )}
         {footprint.trips.annual > 0 && (
@@ -67,7 +67,7 @@ const Trips = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
             <h3>
               Recurring: {formatQuantity(footprint.trips.annual)} per year
             </h3>
-            <br></br>
+            <br />
           </div>
         )}
         {trips && trips.length > 0 ? (

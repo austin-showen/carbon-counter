@@ -50,7 +50,7 @@ const Vehicles = ({ user }) => {
         <h3>
           <Link to="/vehicles/add">Add a Vehicle</Link>
         </h3>
-        <br></br>
+        <br />
         {vehicles && vehicles.length > 0 ? (
           vehicles.map((vehicle) => (
             <div key={vehicle._id} className="card vehicle-card">

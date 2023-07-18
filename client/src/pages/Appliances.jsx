@@ -34,7 +34,7 @@ const Appliances = ({ user }) => {
         <h3>
           <Link to="/appliances/add">Add an Appliance</Link>
         </h3>
-        <br></br>
+        <br />
         {appliances && appliances.length > 0 ? (
           appliances.map((appliance) => (
             <div key={appliance._id} className="card appliance-card">

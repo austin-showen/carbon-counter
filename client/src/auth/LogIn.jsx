@@ -35,7 +35,7 @@ const LogIn = ({ setUser }) => {
           required
         />
       </div>
-      <br></br>
+      <br />
       <div>
         <label htmlFor="password">
           <h3>Password</h3>
@@ -50,7 +50,7 @@ const LogIn = ({ setUser }) => {
           required
         />
       </div>
-      <br></br>
+      <br />
       <button disabled={!formValues.username || !formValues.password}>
         Log In
       </button>

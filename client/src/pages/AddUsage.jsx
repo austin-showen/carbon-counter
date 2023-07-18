@@ -75,7 +75,7 @@ const AddUsage = ({ user }) => {
           How much carbon does your{' '}
           <span className="darkgreen-text">{appliance.name}</span> use?
         </h1>
-        <br></br>
+        <br />
         <div className="card">
           <div className="recurring-selector">
             <button
@@ -93,8 +93,8 @@ const AddUsage = ({ user }) => {
               Recurring Usage
             </button>
           </div>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           {recurring ? (
             <h3>
               Enter the average number of hours you use the{' '}
@@ -114,8 +114,8 @@ const AddUsage = ({ user }) => {
               value={hours}
               onChange={handleChange}
             />
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <h3>Select your country.</h3>
             <select id="country" value={region.country} onChange={handleSelect}>
               <option value="" disabled>
@@ -127,8 +127,8 @@ const AddUsage = ({ user }) => {
                 </option>
               ))}
             </select>
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             {region.country === 'us' && (
               <div>
                 <h3>Select your state.</h3>
@@ -142,8 +142,8 @@ const AddUsage = ({ user }) => {
                     </option>
                   ))}
                 </select>
-                <br></br>
-                <br></br>
+                <br />
+                <br />
               </div>
             )}
             {region.country === 'ca' && (
@@ -159,8 +159,8 @@ const AddUsage = ({ user }) => {
                     </option>
                   ))}
                 </select>
-                <br></br>
-                <br></br>
+                <br />
+                <br />
               </div>
             )}
             <button
@@ -169,8 +169,8 @@ const AddUsage = ({ user }) => {
             >
               Estimate Usage
             </button>
-            <br></br>
-            <br></br>
+            <br />
+            <br />
           </form>
           {estimate && (
             <div>
@@ -185,7 +185,7 @@ const AddUsage = ({ user }) => {
                   carbon.
                 </h2>
               )}
-              <br></br>
+              <br />
               <button onClick={handleSave}>Save this Usage</button>
             </div>
           )}

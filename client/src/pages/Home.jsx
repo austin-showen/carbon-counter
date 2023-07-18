@@ -8,7 +8,7 @@ const Home = ({ user }) => {
         estimate your contribution to global carbon emissions through your
         vehicle and electricity usage.
       </h1>
-      <br></br>
+      <br />
       <h1>
         To get started,&nbsp;
         {user ? (
@@ -23,27 +23,27 @@ const Home = ({ user }) => {
           </span>
         )}
       </h1>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <div
         className="card"
         style={{ textAlign: 'center', width: '60%', marginTop: '50px' }}
       >
         <h2>Why carbon?</h2>
-        <br></br>
+        <br />
         <h3>
           More than{' '}
           <span className="darkgreen-text">6 billion metric tons</span> of
           greenhouse gases enter the atmosphere every year from global human
           activity.
         </h3>
-        <br></br>
+        <br />
         <h3>
           Per-capita carbon usage is highest in wealthy countries, where
           high-energy electronics and large, inefficient vehicles are in
           constant use.
         </h3>
-        <br></br>
+        <br />
         <h3>
           Carbon emissions are easy to estimate, and if you compare your
           options, you can begin to make simple changes to reduce or offset your
