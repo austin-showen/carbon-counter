@@ -65,7 +65,7 @@ const SelectModel = ({
           {selectedModel.name && (
             <div>
               <h2>Model: {selectedModel.name}</h2>
-              <button class="reset" onClick={handleReset}>
+              <button className="reset" onClick={handleReset}>
                 Reset
               </button>
             </div>

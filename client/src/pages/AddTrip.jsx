@@ -69,8 +69,8 @@ const AddTrip = ({ user }) => {
           for a trip?
         </h1>
         <br></br>
-        <div class="card">
-          <div class="recurring-selector">
+        <div className="card">
+          <div className="recurring-selector">
             <button
               id="trip-onetime"
               disabled={!recurring}

@@ -4,6 +4,7 @@ import { BACKEND_URL } from '../globals'
 
 const Trips = ({ user, filter }) => {
   const [trips, setTrips] = useState([])
+  const [totals, setTotals] = useState({ onetime: 0, recurring: 0 })
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -24,10 +25,23 @@ const Trips = ({ user, filter }) => {
     if (user) getTrips()
   }, [reload, filter])
 
+  useEffect(() => {
+    const onetimeTotal = trips
+      .filter((trip) => !trip.weeklyFrequency)
+      .reduce((acc, trip) => acc + Number(trip.carbonGrams), 0)
+    const recurringTotal = trips
+      .filter((trip) => trip.weeklyFrequency)
+      .reduce(
+        (acc, trip) =>
+          acc + Number(trip.carbonGrams) * Number(trip.weeklyFrequency),
+        0
+      )
+    setTotals({ onetime: onetimeTotal, recurring: recurringTotal })
+  }, [trips])
+
   const handleDelete = async (e) => {
-    await axios
-      .delete(`${BACKEND_URL}/trips/${e.target.id}`)
-      .then(setReload(!reload))
+    await axios.delete(`${BACKEND_URL}/trips/${e.target.id}`)
+    setReload(!reload)
   }
 
   const formatQuantity = (quantity) => {
@@ -42,6 +56,12 @@ const Trips = ({ user, filter }) => {
     return (
       <div className="Trips">
         <h1>Trips</h1>
+        {totals.onetime > 0 && (
+          <h3>One-time: {formatQuantity(totals.onetime)}</h3>
+        )}
+        {totals.recurring > 0 && (
+          <h3>Recurring: {formatQuantity(totals.recurring)} per week</h3>
+        )}
         {trips &&
           trips.map((trip) => (
             <div key={trip._id} className="card trip-card">
@@ -66,7 +86,7 @@ const Trips = ({ user, filter }) => {
                   onClick={handleDelete}
                   style={{ opacity: '60%' }}
                 >
-                  <i>Delete</i>
+                  Delete
                 </button>
               </div>
             </div>

@@ -62,7 +62,7 @@ const SelectMake = ({
       {selectedMake.name && (
         <div>
           <h2>Make: {selectedMake.name}</h2>
-          <button class="reset" onClick={handleReset}>
+          <button className="reset" onClick={handleReset}>
             Reset
           </button>
         </div>

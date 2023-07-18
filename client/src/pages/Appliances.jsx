@@ -19,9 +19,8 @@ const Appliances = ({ user }) => {
   }, [reload])
 
   const handleDelete = async (e) => {
-    await axios
-      .delete(`${BACKEND_URL}/appliances/${e.target.id}`)
-      .then(setReload(!reload))
+    await axios.delete(`${BACKEND_URL}/appliances/${e.target.id}`)
+    setReload(!reload)
   }
 
   if (!user) {
@@ -40,6 +39,7 @@ const Appliances = ({ user }) => {
           appliances.map((appliance) => (
             <div key={appliance._id} className="card appliance-card">
               <div>
+                {appliance._id}
                 <h2>{appliance.name}</h2>
                 <h3>{appliance.watts} watts</h3>
                 <Link to="/usages/add" state={{ appliance: appliance }}>
@@ -52,7 +52,7 @@ const Appliances = ({ user }) => {
                   onClick={handleDelete}
                   style={{ opacity: '60%' }}
                 >
-                  <i>Delete</i>
+                  Delete
                 </button>
               </div>
             </div>

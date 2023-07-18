@@ -36,9 +36,8 @@ const Usages = ({ user, filter }) => {
   }, [usages])
 
   const handleDelete = async (e) => {
-    await axios
-      .delete(`${BACKEND_URL}/usages/${e.target.id}`)
-      .then(setReload(!reload))
+    await axios.delete(`${BACKEND_URL}/usages/${e.target.id}`)
+    setReload(!reload)
   }
 
   const formatQuantity = (quantity) => {
@@ -65,16 +64,16 @@ const Usages = ({ user, filter }) => {
           usages.map((usage) => (
             <div key={usage._id} className="card usage-card">
               <div>
-                <h2>
+                <h3>
                   {usage.applianceName} for {usage.hours} hour
                   {usage.hours !== '1' && <span>s</span>} in{' '}
                   {usage.state && <span>{usage.state.toUpperCase()},</span>}{' '}
                   {usage.country.toUpperCase()}
-                </h2>
-                <h3>
-                  {formatQuantity(usage.carbonGrams)} of carbon released
-                  {usage.recurring && <span> per day</span>}
                 </h3>
+                <h2>
+                  {formatQuantity(usage.carbonGrams)} of carbon
+                  {usage.recurring && <span> per day</span>}
+                </h2>
               </div>
               <div>
                 <button
@@ -82,7 +81,7 @@ const Usages = ({ user, filter }) => {
                   onClick={handleDelete}
                   style={{ opacity: '60%' }}
                 >
-                  <i>Delete</i>
+                  Delete
                 </button>
               </div>
             </div>

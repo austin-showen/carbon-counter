@@ -26,9 +26,8 @@ const Vehicles = ({ user }) => {
   }, [reload])
 
   const handleDelete = async (e) => {
-    await axios
-      .delete(`${BACKEND_URL}/vehicles/${e.target.id}`)
-      .then(setReload(!reload))
+    await axios.delete(`${BACKEND_URL}/vehicles/${e.target.id}`)
+    setReload(!reload)
   }
 
   const countTrips = (vehicle) => {
@@ -73,7 +72,7 @@ const Vehicles = ({ user }) => {
                   onClick={handleDelete}
                   style={{ opacity: '60%' }}
                 >
-                  <i>Delete</i>
+                  Delete
                 </button>
               </div>
             </div>
