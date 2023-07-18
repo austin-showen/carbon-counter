@@ -122,7 +122,7 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
   min-width: 500px;
 }
 
-.Vehicles, .Appliances, .AddUsage div, .AddTrip div {
+.Vehicles, .Appliances, .AddUsage > div, .AddTrip > div {
   width: 500px;
 }
 
@@ -177,16 +177,17 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
 
 .recurring-selector {
   display: flex;
-  width: 100%;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-#trip-onetime, #trip-recurring, #usage-onetime, #usage-recurring {
+#trip-onetime, #trip-recurring, #usage-onetime, #usage-recurring, #filter-recurring, #filter-onetime, #filter-all {
   padding-left: 35px;
   padding-right: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-#trip-onetime:disabled, #trip-recurring:disabled, #usage-onetime:disabled, #usage-recurring:disabled {
+#trip-onetime:disabled, #trip-recurring:disabled, #usage-onetime:disabled, #usage-recurring:disabled, #filter-recurring:disabled, #filter-onetime:disabled, #filter-all:disabled {
   background-color: var(--color-4);
   color: var(--color-1);
   box-shadow: inset 3px 3px 5px var(--color-5);
@@ -194,6 +195,18 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
 
 .Footprint {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footprint-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footprint-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

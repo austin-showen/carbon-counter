@@ -41,7 +41,7 @@ const AddTrip = ({ user }) => {
       vehicleId: vehicle.apiId,
       weeklyFrequency: trip.frequency
     })
-    navigate('/trips')
+    navigate('/footprint')
   }
 
   const handleRecurring = () => {

@@ -2,17 +2,27 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { BACKEND_URL } from '../globals'
 
-const Trips = ({ user }) => {
+const Trips = ({ user, filter }) => {
   const [trips, setTrips] = useState([])
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
     const getTrips = async () => {
       const response = await axios.get(`${BACKEND_URL}/trips/${user.username}`)
-      setTrips(response.data)
+      switch (filter) {
+        case 'all':
+          setTrips(response.data)
+          break
+        case 'recurring':
+          setTrips(response.data.filter((trip) => trip.weeklyFrequency))
+          break
+        case 'onetime':
+          setTrips(response.data.filter((trip) => !trip.weeklyFrequency))
+          break
+      }
     }
     if (user) getTrips()
-  }, [reload])
+  }, [reload, filter])
 
   const handleDelete = async (e) => {
     await axios

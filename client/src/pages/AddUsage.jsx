@@ -56,7 +56,7 @@ const AddUsage = ({ user }) => {
       applianceId: appliance._id,
       recurring: recurring
     })
-    navigate('/usages')
+    navigate('/footprint')
   }
 
   const handleRecurring = () => {

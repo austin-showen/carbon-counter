@@ -2,17 +2,27 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { BACKEND_URL } from '../globals'
 
-const Usages = ({ user }) => {
+const Usages = ({ user, filter }) => {
   const [usages, setUsages] = useState([])
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
     const getUsages = async () => {
       const response = await axios.get(`${BACKEND_URL}/usages/${user.username}`)
-      setUsages(response.data)
+      switch (filter) {
+        case 'all':
+          setUsages(response.data)
+          break
+        case 'recurring':
+          setUsages(response.data.filter((usage) => usage.recurring))
+          break
+        case 'onetime':
+          setUsages(response.data.filter((usage) => !usage.recurring))
+          break
+      }
     }
     if (user) getUsages()
-  }, [reload])
+  }, [reload, filter])
 
   const handleDelete = async (e) => {
     await axios
