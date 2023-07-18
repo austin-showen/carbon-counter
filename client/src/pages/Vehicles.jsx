@@ -51,7 +51,7 @@ const Vehicles = ({ user }) => {
           <Link to="/vehicles/add">Add a Vehicle</Link>
         </h3>
         <br></br>
-        {vehicles &&
+        {vehicles && vehicles.length > 0 ? (
           vehicles.map((vehicle) => (
             <div key={vehicle._id} className="card vehicle-card">
               <div>
@@ -76,7 +76,10 @@ const Vehicles = ({ user }) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h1>No vehicles added yet!</h1>
+        )}
       </div>
     )
   }

@@ -71,7 +71,7 @@ const Usages = ({ user, filter }) => {
             <br></br>
           </div>
         )}
-        {usages &&
+        {usages && usages.length > 0 ? (
           usages.map((usage) => (
             <div key={usage._id} className="card usage-card">
               <div>
@@ -96,7 +96,10 @@ const Usages = ({ user, filter }) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h2>No usage registered yet!</h2>
+        )}
       </div>
     )
   }

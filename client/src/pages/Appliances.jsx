@@ -35,7 +35,7 @@ const Appliances = ({ user }) => {
           <Link to="/appliances/add">Add an Appliance</Link>
         </h3>
         <br></br>
-        {appliances &&
+        {appliances && appliances.length > 0 ? (
           appliances.map((appliance) => (
             <div key={appliance._id} className="card appliance-card">
               <div>
@@ -55,7 +55,10 @@ const Appliances = ({ user }) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h1>No appliances added yet!</h1>
+        )}
       </div>
     )
   }

@@ -75,7 +75,7 @@ const Trips = ({ user, filter }) => {
             <br></br>
           </div>
         )}
-        {trips &&
+        {trips && trips.length > 0 ? (
           trips.map((trip) => (
             <div key={trip._id} className="card trip-card">
               <div>
@@ -103,7 +103,10 @@ const Trips = ({ user, filter }) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h2>No trips registered yet!</h2>
+        )}
       </div>
     )
   }
