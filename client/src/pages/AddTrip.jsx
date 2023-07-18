@@ -56,92 +56,96 @@ const AddTrip = ({ user }) => {
       : `${quantity} grams`
   }
 
-  return (
-    <div className="AddTrip">
-      <h1>
-        Taking your{' '}
-        <span className="darkgreen-text">
-          {vehicle.year} {vehicle.make} {vehicle.model}
-        </span>{' '}
-        for a trip?
-      </h1>
-      <br></br>
-      <div class="card">
-        <div class="recurring-selector">
-          <button
-            id="trip-onetime"
-            disabled={!recurring}
-            onClick={handleRecurring}
-          >
-            One-Time Trip
-          </button>
-          <button
-            id="trip-recurring"
-            disabled={recurring}
-            onClick={handleRecurring}
-          >
-            Recurring Trip
-          </button>
-        </div>
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div className="AddTrip">
+        <h1>
+          Taking your{' '}
+          <span className="darkgreen-text">
+            {vehicle.year} {vehicle.make} {vehicle.model}
+          </span>{' '}
+          for a trip?
+        </h1>
         <br></br>
-        <br></br>
-        <h3>Enter the distance in miles.</h3>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="distance"
-            placeholder="Number of miles"
-            value={trip.distance}
-            onChange={handleChange}
-          />
+        <div class="card">
+          <div class="recurring-selector">
+            <button
+              id="trip-onetime"
+              disabled={!recurring}
+              onClick={handleRecurring}
+            >
+              One-Time Trip
+            </button>
+            <button
+              id="trip-recurring"
+              disabled={recurring}
+              onClick={handleRecurring}
+            >
+              Recurring Trip
+            </button>
+          </div>
           <br></br>
           <br></br>
-          {recurring && (
+          <h3>Enter the distance in miles.</h3>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="distance"
+              placeholder="Number of miles"
+              value={trip.distance}
+              onChange={handleChange}
+            />
+            <br></br>
+            <br></br>
+            {recurring && (
+              <div>
+                <h3>How many times per week do you make this trip?</h3>
+                <input
+                  type="text"
+                  id="frequency"
+                  placeholder="Trips per week"
+                  value={trip.frequency}
+                  onChange={handleChange}
+                />
+                <br></br>
+                <br></br>
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={
+                !trip.distance || (recurring && !trip.frequency) || estimate
+              }
+            >
+              Calculate
+            </button>
+            <br></br>
+            <br></br>
+          </form>
+          {estimate && (
             <div>
-              <h3>How many times per week do you make this trip?</h3>
-              <input
-                type="text"
-                id="frequency"
-                placeholder="Trips per week"
-                value={trip.frequency}
-                onChange={handleChange}
-              />
+              {trip.frequency ? (
+                <h2>
+                  Your trip releases an average of{' '}
+                  {formatQuantity(estimate.carbon_g * trip.frequency)} of carbon
+                  per week.
+                </h2>
+              ) : (
+                <h2>
+                  Your trip released {formatQuantity(estimate.carbon_g)} of
+                  carbon.
+                </h2>
+              )}
               <br></br>
-              <br></br>
+              <button onClick={handleSave}>Save This Trip</button>
             </div>
           )}
-          <button
-            type="submit"
-            disabled={
-              !trip.distance || (recurring && !trip.frequency) || estimate
-            }
-          >
-            Calculate
-          </button>
-          <br></br>
-          <br></br>
-        </form>
-        {estimate && (
-          <div>
-            {trip.frequency ? (
-              <h2>
-                Your trip releases an average of{' '}
-                {formatQuantity(estimate.carbon_g * trip.frequency)} of carbon
-                per week.
-              </h2>
-            ) : (
-              <h2>
-                Your trip released {formatQuantity(estimate.carbon_g)} of
-                carbon.
-              </h2>
-            )}
-            <br></br>
-            <button onClick={handleSave}>Save This Trip</button>
-          </div>
-        )}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default AddTrip

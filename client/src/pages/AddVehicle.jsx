@@ -27,8 +27,9 @@ const AddVehicle = ({ user }) => {
     navigate('/vehicles')
   }
 
-  if (!user) return <h1>Log in to access this page.</h1>
-  else
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
     return (
       <div className="AddVehicle">
         <div>
@@ -82,6 +83,7 @@ const AddVehicle = ({ user }) => {
         </div>
       </div>
     )
+  }
 }
 
 export default AddVehicle

@@ -26,28 +26,32 @@ const Usages = ({ user }) => {
       : `${quantity} grams`
   }
 
-  return (
-    <div>
-      {usages &&
-        usages.map((usage) => (
-          <div key={usage._id} className="card">
-            <h2>
-              {usage.applianceName} for {usage.hours} hour
-              {usage.hours !== '1' && <span>s</span>} in{' '}
-              {usage.state && <span>{usage.state.toUpperCase()},</span>}{' '}
-              {usage.country.toUpperCase()}
-            </h2>
-            <h3>
-              {formatQuantity(usage.carbonGrams)} of carbon released
-              {usage.recurring && <span> per day</span>}
-            </h3>
-            <button id={usage._id} onClick={handleDelete}>
-              Delete
-            </button>
-          </div>
-        ))}
-    </div>
-  )
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div>
+        {usages &&
+          usages.map((usage) => (
+            <div key={usage._id} className="card">
+              <h2>
+                {usage.applianceName} for {usage.hours} hour
+                {usage.hours !== '1' && <span>s</span>} in{' '}
+                {usage.state && <span>{usage.state.toUpperCase()},</span>}{' '}
+                {usage.country.toUpperCase()}
+              </h2>
+              <h3>
+                {formatQuantity(usage.carbonGrams)} of carbon released
+                {usage.recurring && <span> per day</span>}
+              </h3>
+              <button id={usage._id} onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          ))}
+      </div>
+    )
+  }
 }
 
 export default Usages

@@ -27,50 +27,54 @@ const AddAppliance = ({ user }) => {
     navigate('/appliances')
   }
 
-  return (
-    <div className="AddAppliance card">
-      <form onSubmit={handleSubmit}>
-        <h3>
-          <label htmlFor="name">Name of Appliance: </label>
-        </h3>
-        <input
-          type="text"
-          id="name"
-          placeholder="Desktop PC"
-          value={appliance.name}
-          onChange={handleChangeName}
-        />
-        <br></br>
-        <br></br>
-        <h3>
-          <label htmlFor="name">Watts: </label>
-        </h3>
-        <input
-          type="text"
-          id="watts"
-          placeholder="200"
-          value={appliance.watts}
-          onChange={handleChangeWatts}
-        />
-        <br></br>
-        <br></br>
-        <button type="submit">Add Appliance</button>
-      </form>
-      <div>
-        Common wattages:
-        <ul>
-          <li>Laptops: 50-75 W</li>
-          <li>Gaming computers: 300-500 W</li>
-          <li>Monitors: 100-200 W</li>
-          <li>Ovens: 1000-3000 W</li>
-          <li>Refrigerators: 500-1000 W</li>
-          <li>Washing machines: 350-500 W</li>
-          <li>Dryers: 1500-5000 W</li>
-          <li>Central AC: 3000-4000 W</li>
-        </ul>
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div className="AddAppliance card">
+        <form onSubmit={handleSubmit}>
+          <h3>
+            <label htmlFor="name">Name of Appliance: </label>
+          </h3>
+          <input
+            type="text"
+            id="name"
+            placeholder="Desktop PC"
+            value={appliance.name}
+            onChange={handleChangeName}
+          />
+          <br></br>
+          <br></br>
+          <h3>
+            <label htmlFor="name">Watts: </label>
+          </h3>
+          <input
+            type="text"
+            id="watts"
+            placeholder="200"
+            value={appliance.watts}
+            onChange={handleChangeWatts}
+          />
+          <br></br>
+          <br></br>
+          <button type="submit">Add Appliance</button>
+        </form>
+        <div>
+          Common wattages:
+          <ul>
+            <li>Laptops: 50-75 W</li>
+            <li>Gaming computers: 300-500 W</li>
+            <li>Monitors: 100-200 W</li>
+            <li>Ovens: 1000-3000 W</li>
+            <li>Refrigerators: 500-1000 W</li>
+            <li>Washing machines: 350-500 W</li>
+            <li>Dryers: 1500-5000 W</li>
+            <li>Central AC: 3000-4000 W</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default AddAppliance

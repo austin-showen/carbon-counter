@@ -24,38 +24,42 @@ const Appliances = ({ user }) => {
       .then(setReload(!reload))
   }
 
-  return (
-    <div className="Appliances">
-      <h1>
-        <span className="darkgreen-text">{user.username}</span>'s Appliances
-      </h1>
-      <h3>
-        <Link to="/appliances/add">Add an Appliance</Link>
-      </h3>
-      <br></br>
-      {appliances &&
-        appliances.map((appliance) => (
-          <div key={appliance._id} className="card appliance-card">
-            <div>
-              <h2>{appliance.name}</h2>
-              <h3>{appliance.watts} watts</h3>
-              <Link to="/usages/add" state={{ appliance: appliance }}>
-                Add Usage
-              </Link>
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div className="Appliances">
+        <h1>
+          <span className="darkgreen-text">{user.username}</span>'s Appliances
+        </h1>
+        <h3>
+          <Link to="/appliances/add">Add an Appliance</Link>
+        </h3>
+        <br></br>
+        {appliances &&
+          appliances.map((appliance) => (
+            <div key={appliance._id} className="card appliance-card">
+              <div>
+                <h2>{appliance.name}</h2>
+                <h3>{appliance.watts} watts</h3>
+                <Link to="/usages/add" state={{ appliance: appliance }}>
+                  Add Usage
+                </Link>
+              </div>
+              <div>
+                <button
+                  id={appliance._id}
+                  onClick={handleDelete}
+                  style={{ opacity: '60%' }}
+                >
+                  <i>Delete</i>
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                id={appliance._id}
-                onClick={handleDelete}
-                style={{ opacity: '60%' }}
-              >
-                <i>Delete</i>
-              </button>
-            </div>
-          </div>
-        ))}
-    </div>
-  )
+          ))}
+      </div>
+    )
+  }
 }
 
 export default Appliances

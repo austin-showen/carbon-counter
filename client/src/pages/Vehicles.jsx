@@ -6,7 +6,6 @@ import { BACKEND_URL } from '../globals'
 const Vehicles = ({ user }) => {
   const [vehicles, setVehicles] = useState([])
   const [trips, setTrips] = useState([])
-  // const [tripStats, setTripStats] = useState(null)
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
@@ -41,43 +40,47 @@ const Vehicles = ({ user }) => {
     return (vehicleTrip.carbonGrams / vehicleTrip.miles).toFixed(0)
   }
 
-  return (
-    <div className="Vehicles">
-      <h1>
-        <span className="darkgreen-text">{user.username}</span>'s Vehicles
-      </h1>
-      <h3>
-        <Link to="/vehicles/add">Add a Vehicle</Link>
-      </h3>
-      <br></br>
-      {vehicles &&
-        vehicles.map((vehicle) => (
-          <div key={vehicle._id} className="card vehicle-card">
-            <div>
-              <h2>
-                {vehicle.year} {vehicle.make} {vehicle.model}
-              </h2>
-              <h3>{countTrips(vehicle)} trip(s) registered</h3>
-              {countTrips(vehicle) > 0 && (
-                <h3>{calculateAverage(vehicle)} grams of carbon / mile</h3>
-              )}
-              <Link to="/trips/add" state={{ vehicle: vehicle }}>
-                Add a Trip
-              </Link>
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div className="Vehicles">
+        <h1>
+          <span className="darkgreen-text">{user.username}</span>'s Vehicles
+        </h1>
+        <h3>
+          <Link to="/vehicles/add">Add a Vehicle</Link>
+        </h3>
+        <br></br>
+        {vehicles &&
+          vehicles.map((vehicle) => (
+            <div key={vehicle._id} className="card vehicle-card">
+              <div>
+                <h2>
+                  {vehicle.year} {vehicle.make} {vehicle.model}
+                </h2>
+                <h3>{countTrips(vehicle)} trip(s) registered</h3>
+                {countTrips(vehicle) > 0 && (
+                  <h3>{calculateAverage(vehicle)} grams of carbon / mile</h3>
+                )}
+                <Link to="/trips/add" state={{ vehicle: vehicle }}>
+                  Add a Trip
+                </Link>
+              </div>
+              <div>
+                <button
+                  id={vehicle._id}
+                  onClick={handleDelete}
+                  style={{ opacity: '60%' }}
+                >
+                  <i>Delete</i>
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                id={vehicle._id}
-                onClick={handleDelete}
-                style={{ opacity: '60%' }}
-              >
-                <i>Delete</i>
-              </button>
-            </div>
-          </div>
-        ))}
-    </div>
-  )
+          ))}
+      </div>
+    )
+  }
 }
 
 export default Vehicles

@@ -26,31 +26,35 @@ const Trips = ({ user }) => {
       : `${quantity} grams`
   }
 
-  return (
-    <div>
-      {trips &&
-        trips.map((trip) => (
-          <div key={trip._id} className="card">
-            <h3>
-              {trip.year} {trip.make} {trip.model} - {trip.miles} miles
-            </h3>
-            {trip.weeklyFrequency && (
-              <h3>{trip.weeklyFrequency} times per week</h3>
-            )}
-            <h2>{formatQuantity(trip.carbonGrams)} of carbon</h2>
-            {trip.weeklyFrequency && (
+  if (!user) {
+    return <h1>Log in to access this page.</h1>
+  } else {
+    return (
+      <div>
+        {trips &&
+          trips.map((trip) => (
+            <div key={trip._id} className="card">
               <h3>
-                {formatQuantity(trip.carbonGrams * trip.weeklyFrequency)} of
-                carbon per week
+                {trip.year} {trip.make} {trip.model} - {trip.miles} miles
               </h3>
-            )}
-            <button id={trip._id} onClick={handleDelete}>
-              Delete
-            </button>
-          </div>
-        ))}
-    </div>
-  )
+              {trip.weeklyFrequency && (
+                <h3>{trip.weeklyFrequency} times per week</h3>
+              )}
+              <h2>{formatQuantity(trip.carbonGrams)} of carbon</h2>
+              {trip.weeklyFrequency && (
+                <h3>
+                  {formatQuantity(trip.carbonGrams * trip.weeklyFrequency)} of
+                  carbon per week
+                </h3>
+              )}
+              <button id={trip._id} onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          ))}
+      </div>
+    )
+  }
 }
 
 export default Trips
