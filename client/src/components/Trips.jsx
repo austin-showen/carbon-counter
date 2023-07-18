@@ -45,7 +45,9 @@ const Trips = ({ user, filter }) => {
   }
 
   const formatQuantity = (quantity) => {
-    return quantity > 1000
+    return quantity > 1000000
+      ? `${(quantity / 1000000).toFixed(2)} metric tons`
+      : quantity > 1000
       ? `${(quantity / 1000).toFixed(2)} kilograms`
       : `${quantity} grams`
   }
@@ -56,11 +58,22 @@ const Trips = ({ user, filter }) => {
     return (
       <div className="Trips">
         <h1>Trips</h1>
+        <br></br>
         {totals.onetime > 0 && (
-          <h3>One-time: {formatQuantity(totals.onetime)}</h3>
+          <h3>
+            One-time: {formatQuantity(totals.onetime)}
+            <br></br>
+            <br></br>
+          </h3>
         )}
         {totals.recurring > 0 && (
-          <h3>Recurring: {formatQuantity(totals.recurring)} per week</h3>
+          <div style={{ textAlign: 'center' }}>
+            <h3>
+              Recurring: {formatQuantity(totals.recurring)} per week
+              <br />({formatQuantity((totals.recurring / 7) * 365.25)} per year)
+            </h3>
+            <br></br>
+          </div>
         )}
         {trips &&
           trips.map((trip) => (

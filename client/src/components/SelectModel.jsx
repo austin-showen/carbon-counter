@@ -83,7 +83,7 @@ const SelectModel = ({
               </form>
               <div>
                 {models.filteredModels &&
-                  models.filteredModels.slice(0, 8).map((model) => (
+                  models.filteredModels.slice(0, 10).map((model) => (
                     <div
                       key={model}
                       className="card hover-green"
@@ -92,9 +92,9 @@ const SelectModel = ({
                       {model}
                     </div>
                   ))}
-                {models.filteredModels && models.filteredModels.length > 8 && (
+                {models.filteredModels && models.filteredModels.length > 10 && (
                   <div className="card green">
-                    <i>{models.filteredModels.length - 8} more...</i>
+                    <i>{models.filteredModels.length - 10} more...</i>
                   </div>
                 )}
               </div>

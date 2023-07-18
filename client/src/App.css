@@ -226,3 +226,9 @@ main, .AddVehicle, .Vehicles, .Appliances, .AddTrip, .AddUsage, .AddVehicle div 
   flex-direction: column;
   align-items: center;
 }
+
+select {
+  font-family: 'Inter', sans-serif;
+  padding: 5px;
+  margin-top: 5px;
+}

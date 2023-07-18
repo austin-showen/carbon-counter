@@ -80,7 +80,7 @@ const SelectMake = ({
           </form>
           <div>
             {makes.filteredMakes &&
-              makes.filteredMakes.slice(0, 8).map((make) => (
+              makes.filteredMakes.slice(0, 10).map((make) => (
                 <div
                   key={make}
                   className="card hover-green"
@@ -89,9 +89,9 @@ const SelectMake = ({
                   {make}
                 </div>
               ))}
-            {makes.filteredMakes && makes.filteredMakes.length > 8 && (
+            {makes.filteredMakes && makes.filteredMakes.length > 10 && (
               <div className="card green">
-                <i>{makes.filteredMakes.length - 8} more...</i>
+                <i>{makes.filteredMakes.length - 10} more...</i>
               </div>
             )}
           </div>

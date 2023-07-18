@@ -42,7 +42,7 @@ const Usages = ({ user, filter }) => {
 
   const formatQuantity = (quantity) => {
     return quantity > 1000000
-      ? `${(quantity / 1000000).toFixed(2)} metric tonnes`
+      ? `${(quantity / 1000000).toFixed(2)} metric tons`
       : quantity > 1000
       ? `${(quantity / 1000).toFixed(2)} kilograms`
       : `${quantity} grams`
@@ -54,11 +54,22 @@ const Usages = ({ user, filter }) => {
     return (
       <div className="Usages">
         <h1>Electronic Usage</h1>
+        <br></br>
         {totals.onetime > 0 && (
-          <h3>One-time: {formatQuantity(totals.onetime)}</h3>
+          <h3>
+            One-time: {formatQuantity(totals.onetime)}
+            <br></br>
+            <br></br>
+          </h3>
         )}
         {totals.recurring > 0 && (
-          <h3>Recurring: {formatQuantity(totals.recurring)} per day</h3>
+          <div style={{ textAlign: 'center' }}>
+            <h3>
+              Recurring: {formatQuantity(totals.recurring)} per day
+              <br />({formatQuantity(totals.recurring * 365.25)} per year)
+            </h3>
+            <br></br>
+          </div>
         )}
         {usages &&
           usages.map((usage) => (
