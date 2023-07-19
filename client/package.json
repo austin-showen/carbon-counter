@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "http://localhost:3001",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build": "vite build && touch ./dist/CNAME && echo 'carbon-counter.surge.sh' >> ./dist/CNAME && npx surge --project ./dist --domain 'carbon-counter.surge.sh'"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
