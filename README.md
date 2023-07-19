@@ -46,18 +46,6 @@
 
 ---
 
-### **_Entity Relationship Diagram_**
-
-#### ![Entity Relationship Diagram](assets/entity_relationship_diagram.png)
-
----
-
-### **_Component Hierarchy Diagram_**
-
-#### ![Component Hierarchy Diagram](assets/component_hierarchy_diagram.png)
-
----
-
 ### Screenshots
 
 #### Home Page
@@ -71,6 +59,18 @@
 
 #### Carbon Footprint Page
 #### ![Carbon Footprint Page Screenshot](assets/footprint.png)
+
+---
+
+### **_Entity Relationship Diagram_**
+
+#### ![Entity Relationship Diagram](assets/entity_relationship_diagram.png)
+
+---
+
+### **_Component Hierarchy Diagram_**
+
+#### ![Component Hierarchy Diagram](assets/component_hierarchy_diagram.png)
 
 ---
 
