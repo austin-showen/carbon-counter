@@ -8,7 +8,7 @@
     "dev": "vite",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "build": "vite build && touch ./dist/CNAME && echo 'carbon-counter.surge.sh' >> ./dist/CNAME && npx surge --project ./dist --domain 'carbon-counter.surge.sh'"
+    "build": "vite build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
