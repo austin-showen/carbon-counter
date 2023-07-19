@@ -10,7 +10,7 @@ const Trips = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
     const getTrips = async () => {
       const sleep = (delay) =>
         new Promise((resolve) => setTimeout(resolve, delay))
-      await sleep(25)
+      await sleep(40)
       const response = await axios.get(`${BACKEND_URL}/trips/${user.username}`)
       switch (filter) {
         case 'all':
