@@ -8,6 +8,9 @@ const Trips = ({ user, filter, footprint, setFootprint, formatQuantity }) => {
 
   useEffect(() => {
     const getTrips = async () => {
+      const sleep = (delay) =>
+        new Promise((resolve) => setTimeout(resolve, delay))
+      await sleep(25)
       const response = await axios.get(`${BACKEND_URL}/trips/${user.username}`)
       switch (filter) {
         case 'all':
